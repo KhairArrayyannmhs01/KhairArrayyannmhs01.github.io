@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M.Khair Arrayyan — Portfolio</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- ★ External stylesheet ★ -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ══ LIGHTBOX ══════════════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lb-close"><i class="fas fa-times"></i></button>
+    <img id="lb-img" src="" alt="Preview">
+  </div>
+
+  <!-- ══ SCROLL-TO-TOP ═════════════════════════════════════════════════ -->
+  <button class="scroll-top-btn" id="scrollTopBtn" title="Kembali ke atas">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ══ MAIN WRAPPER ══════════════════════════════════════════════════ -->
+  <div class="portfolio-wrap">
+
+    <!-- ── HERO CARD ──────────────────────────────────────────────── -->
+    <div class="hero-card">
+      <div class="hero-inner">
+
+        <!-- Avatar + Name -->
+        <div class="hero-avatar-col">
+          <div class="avatar-wrapper">
+            <img
+              src="assets/images/profile.jpg"
+              alt="M.Khair Arrayyan"
+              onerror="this.src='https://ui-avatars.com/api/?name=MK&background=162844&color=2563eb&size=200&bold=true&font-size=0.42'"
+            >
+            <span class="avatar-badge"></span>
+          </div>
+          <div class="hero-meta">
+            <h1>M.Khair Arrayyan</h1>
+            <p class="role">Mahasiswa · <span>UIB Batam</span></p>
+            <span class="status-pill">Aktif</span>
+            <div class="hero-social">
+              <a class="social-btn" href="#" title="GitHub"><i class="fab fa-github"></i></a>
+              <a class="social-btn" href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a class="social-btn" href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="hero-contact-col">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>officialkhairarrayyan@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+62 813 xxxx xxxx</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-calendar"></i>
+            <span>04 Oktober 2007</span>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="hero-location-col">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>
+            <strong>Batam, Indonesia</strong>
+            Universitas Internasional Batam
+          </p>
+        </div>
+
+      </div><!-- /hero-inner -->
+
+      <!-- ── TAB NAVIGATION ─────────────────────────────────────── -->
+      <div class="tab-nav">
+        <ul>
+          <li>
+            <button class="tab-btn active" data-target="beranda">
+              <i class="fas fa-home"></i> Beranda
+            </button>
+          </li>
+          <li>
+            <button class="tab-btn" data-target="profil">
+              <i class="fas fa-user"></i> Profil
+            </button>
+          </li>
+          <li>
+            <button class="tab-btn" data-target="resume">
+              <i class="fas fa-graduation-cap"></i> Resume
+            </button>
+          </li>
+          <li>
+            <button class="tab-btn" data-target="portfolio">
+              <i class="fas fa-images"></i> Portfolio
+            </button>
+          </li>
+          <li>
+            <button class="tab-btn" data-target="kontak">
+              <i class="fas fa-paper-plane"></i> Kontak Saya
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div><!-- /hero-card -->
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         PANEL: BERANDA
+    ══════════════════════════════════════════════════════════════ -->
+    <div class="panel active" id="panel-beranda">
+      <div class="beranda-grid">
+
+        <!-- Photo -->
+        <div class="photo-card">
+          <img
+            src="assets/images/profile-big.jpg"
+            alt="Foto M.Khair Arrayyan"
+            onerror="this.src='https://ui-avatars.com/api/?name=MKA&background=0e1c35&color=2563eb&size=400&bold=true&font-size=0.35'"
+          >
+        </div>
+
+        <!-- Right -->
+        <div>
+          <div class="intro-block">
+            <h3>Halo, Salam Kenal! 👋</h3>
+            <p>
+              Saya adalah mahasiswa aktif Semester 2 di Universitas Internasional Batam, dengan minat mendalam
+              di bidang pemrograman dan sistem informasi.
+            </p>
+            <p>
+              Saya percaya bahwa teknologi yang dibangun dengan penuh dedikasi dapat memberi dampak nyata bagi
+              masyarakat. Mari kita wujudkan bersama.
+            </p>
+            <div class="intro-quote">
+              <i class="fas fa-quote-left"></i>
+              Talk is cheap, show me the code.
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-label">Posisi</div>
+              <div class="info-value">Mahasiswa</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Semester</div>
+              <div class="info-value">Semester 2</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Kewarganegaraan</div>
+              <div class="info-value">Indonesia 🇮🇩</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Tanggal Lahir</div>
+              <div class="info-value">04 Oktober 2007</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Bahasa</div>
+              <div class="info-value">Indonesia · Inggris</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Website Kampus</div>
+              <div class="info-value" style="color:var(--accent)">www.uib.ac.id</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         PANEL: PROFIL
+    ══════════════════════════════════════════════════════════════ -->
+    <div class="panel" id="panel-profil">
+
+      <h3 class="section-heading"><i class="fas fa-briefcase"></i> Keahlian</h3>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-code"></i></div>
+          <div class="service-title">Web Design</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-gamepad"></i></div>
+          <div class="service-title">Game Development</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+          <div class="service-title">Aplikasi Mobile</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-film"></i></div>
+          <div class="service-title">Animasi 2D</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-desktop"></i></div>
+          <div class="service-title">Desktop App</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="service-title">Problem Solving</div>
+        </div>
+      </div>
+
+      <h3 class="section-heading"><i class="fas fa-chart-bar"></i> Skill Teknis</h3>
+      <div class="skills-block">
+        <div class="skill-row">
+          <div class="skill-header"><span>HTML / CSS</span><span>85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-header"><span>JavaScript</span><span>70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-header"><span>Python</span><span>60%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-header"><span>Game Development / Unity</span><span>50%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-header"><span>Animasi 2D</span><span>65%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+        </div>
+
+        <div class="chip-group">
+          <span class="chip accent"><i class="fab fa-html5"></i> HTML5</span>
+          <span class="chip accent"><i class="fab fa-css3-alt"></i> CSS3</span>
+          <span class="chip accent"><i class="fab fa-js"></i> JavaScript</span>
+          <span class="chip gold"><i class="fab fa-python"></i> Python</span>
+          <span class="chip gold"><i class="fab fa-unity"></i> Unity</span>
+          <span class="chip"><i class="fab fa-git-alt"></i> Git</span>
+          <span class="chip"><i class="fab fa-figma"></i> Figma</span>
+          <span class="chip"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         PANEL: RESUME
+    ══════════════════════════════════════════════════════════════ -->
+    <div class="panel" id="panel-resume">
+      <h3 class="section-heading"><i class="fas fa-graduation-cap"></i> Riwayat Pendidikan</h3>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2025 – Sekarang</div>
+            <div class="timeline-level">Perguruan Tinggi Negeri</div>
+            <div class="timeline-school">Universitas Internasional Batam</div>
+            <div class="timeline-desc">Program Studi Teknik Informatika · Semester 2 · Batam, Kepulauan Riau</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2022 – 2025</div>
+            <div class="timeline-level">Sekolah Menengah Kejuruan</div>
+            <div class="timeline-school">SMK Multistudi Highschool Batam</div>
+            <div class="timeline-desc">Jurusan Rekayasa Perangkat Lunak · Batam</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2019 – 2022</div>
+            <div class="timeline-level">Sekolah Menengah Pertama</div>
+            <div class="timeline-school">SMPN 29 Batam</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2013 – 2019</div>
+            <div class="timeline-level">Sekolah Dasar</div>
+            <div class="timeline-school">SDN 001 Batu Ampar</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         PANEL: PORTFOLIO
+    ══════════════════════════════════════════════════════════════ -->
+    <div class="panel" id="panel-portfolio">
+      <h3 class="section-heading"><i class="fas fa-images"></i> Galeri Portfolio</h3>
+      <div class="gallery-grid">
+
+        <div class="gallery-item" data-title="Project pkl">
+          <img src="assets/images/gallery/gallery_01.png" alt="Project 01"
+               onerror="this.parentElement.classList.add('gallery-empty');this.remove()">
+          <div class="gallery-overlay"><span>Project pkl</span></div>
+        </div>
+
+        <div class="gallery-item" data-title="Project sekolah">
+          <img src="assets/images/gallery/gallery_02.png" alt="Project 02"
+               onerror="this.parentElement.classList.add('gallery-empty');this.remove()">
+          <div class="gallery-overlay"><span>Project sekolah</span></div>
+        </div>
+
+        <div class="gallery-item" data-title="Project toko tas">
+          <img src="assets/images/gallery/gallery_03.png" alt="Project 03"
+               onerror="this.parentElement.classList.add('gallery-empty');this.remove()">
+          <div class="gallery-overlay"><span>Project toko tas</span></div>
+        </div>
+
+        <div class="gallery-item" data-title="Project pengaduan masyarakat">
+          <img src="assets/images/gallery/gallery_04.png" alt="Project 04"
+               onerror="this.parentElement.classList.add('gallery-empty');this.remove()">
+          <div class="gallery-overlay"><span>Project pengaduan masyarakat</span></div>
+        </div>
+
+        <div class="gallery-item" data-title="Project game">
+          <img src="assets/images/gallery/gallery_05.png" alt="Project 05"
+               onerror="this.parentElement.classList.add('gallery-empty');this.remove()">
+          <div class="gallery-overlay"><span>Project game</span></div>
+        </div>
+
+        <div class="gallery-item" data-title="Project hotel">
+          <img src="assets/images/gallery/gallery_06.png" alt="Project 06"
+               onerror="this.parentElement.classList.add('gallery-empty');this.remove()">
+          <div class="gallery-overlay"><span>Project hotel</span></div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         PANEL: KONTAK
+    ══════════════════════════════════════════════════════════════ -->
+    <div class="panel" id="panel-kontak">
+      <h3 class="section-heading"><i class="fas fa-paper-plane"></i> Hubungi Saya</h3>
+      <div class="contact-grid">
+
+        <!-- Map -->
+        <div class="map-card">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.05668747712!2d104.00085421475379!3d1.1195430991833824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d98be09646b351%3A0x36a826082690c786!2sBatam%20International%20University!5e0!3m2!1sen!2sid!4v1571133272968!5m2!1sen!2sid"
+            frameborder="0"
+            style="border:0"
+            allowfullscreen
+            loading="lazy"
+            title="Lokasi UIB"
+          ></iframe>
+        </div>
+
+        <!-- Form -->
+        <div class="form-card">
+          <div class="form-row">
+            <div class="field-group">
+              <label class="field-label">Nama Lengkap</label>
+              <input class="field-input" type="text" placeholder="Nama kamu">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Alamat Email</label>
+              <input class="field-input" type="email" placeholder="email@domain.com">
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Nomor Handphone</label>
+            <input class="field-input" type="tel" placeholder="+62 8xx xxxx xxxx">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Pesan</label>
+            <textarea class="field-input" placeholder="Tuliskan pesan kamu di sini..."></textarea>
+          </div>
+          <button class="btn-primary" id="sendBtn">
+            <i class="fas fa-paper-plane"></i> Kirim Pesan
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /portfolio-wrap -->
+
+
+  <!-- ══ JAVASCRIPT ═════════════════════════════════════════════════ -->
+  <script>
+    /* ── Tab switching ─────────────────────────────────────────────── */
+    const tabBtns  = document.querySelectorAll('.tab-btn');
+    const panels   = document.querySelectorAll('.panel');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const target = btn.dataset.target;
+        panels.forEach(p => {
+          p.classList.remove('active');
+          if (p.id === 'panel-' + target) {
+            p.classList.add('active');
+            if (target === 'profil') triggerSkillBars();
+          }
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    /* ── Skill bar animation ───────────────────────────────────────── */
+    let barsAnimated = false;
+    function triggerSkillBars() {
+      if (barsAnimated) return;
+      barsAnimated = true;
+      document.querySelectorAll('.skill-fill').forEach(el => {
+        el.style.width = el.dataset.width + '%';
+      });
+    }
+
+    /* ── Gallery lightbox ──────────────────────────────────────────── */
+    const lightbox = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lb-img');
+    const lbClose  = document.getElementById('lb-close');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        if (!img) return;
+        lbImg.src = img.src;
+        lightbox.classList.add('open');
+      });
+    });
+
+    function closeLightbox() { lightbox.classList.remove('open'); }
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    /* ── Scroll-to-top ─────────────────────────────────────────────── */
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('show', window.scrollY > 280);
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ── Send button feedback ──────────────────────────────────────── */
+    document.getElementById('sendBtn').addEventListener('click', function() {
+      this.innerHTML = '<i class="fas fa-check"></i> Pesan Berhasil Dikirim!';
+      this.style.background = '#16a34a';
+      this.style.boxShadow  = '0 4px 14px rgba(22,163,74,0.35)';
+      this.disabled = true;
+      setTimeout(() => {
+        this.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Pesan';
+        this.style.background = '';
+        this.style.boxShadow  = '';
+        this.disabled = false;
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
