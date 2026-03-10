@@ -13,104 +13,125 @@
 </head>
 <body>
 
-  <!-- ══ LIGHTBOX ══════════════════════════════════════════════════════ -->
+  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lb-close"><i class="fas fa-times"></i></button>
     <img id="lb-img" src="" alt="Preview">
   </div>
 
-  <!-- ══ SCROLL-TO-TOP ═════════════════════════════════════════════════ -->
+  <!-- SCROLL-TO-TOP -->
   <button class="scroll-top-btn" id="scrollTopBtn" title="Kembali ke atas">
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- ══ MAIN WRAPPER ══════════════════════════════════════════════════ -->
-  <div class="portfolio-wrap">
+  <!-- SIDEBAR TOGGLE (mobile) -->
+  <button class="sidebar-toggle" id="sidebarToggle" title="Buka Menu">
+    <i class="fas fa-bars"></i>
+  </button>
 
-    <!-- ── HERO CARD ──────────────────────────────────────────────── -->
-    <div class="hero-card">
-      <div class="hero-inner">
+  <!-- SIDEBAR OVERLAY (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <!-- Avatar + Name -->
-        <div class="hero-avatar-col">
-          <div class="avatar-wrapper">
-            <img
-              src="assets/images/profile.jpg"
-              alt="M.Khair Arrayyan"
-              onerror="this.src='https://ui-avatars.com/api/?name=MK&background=162844&color=2563eb&size=200&bold=true&font-size=0.42'"
-            >
-            <span class="avatar-badge"></span>
-          </div>
-          <div class="hero-meta">
-            <h1>M.Khair Arrayyan</h1>
-            <p class="role">Mahasiswa · <span>UIB Batam</span></p>
-            <span class="status-pill">Aktif</span>
-            <div class="hero-social">
-              <a class="social-btn" href="https://github.com/KhairArrayyannmhs01" title="GitHub"><i class="fab fa-github"></i></a>
-              <a class="social-btn" href="https://www.linkedin.com/in/m-khair-ar-rayyan-1b9251386/" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-              <a class="social-btn" href="https://www.instagram.com/khair.arryynn/" title="Instagram"><i class="fab fa-instagram"></i></a>
+  <!-- PAGE LAYOUT -->
+  <div class="page-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sb-brand">
+        <div class="sb-avatar">
+          <img src="assets/images/profile.jpg" alt="MKA"
+            onerror="this.src='https://ui-avatars.com/api/?name=MK&background=162844&color=2563eb&size=80&bold=true'">
+          <span class="sb-online"></span>
+        </div>
+        <div class="sb-brand-text">
+          <span class="sb-name">M. Khair Arrayyan</span>
+          <span class="sb-role">Mahasiswa · UIB Batam</span>
+        </div>
+      </div>
+
+      <div class="sb-divider"></div>
+
+      <nav class="sb-nav">
+        <span class="sb-nav-label">Menu Utama</span>
+        <ul>
+          <li><button class="sb-btn active" data-target="beranda"><span class="sb-icon"><i class="fas fa-home"></i></span><span class="sb-text">Beranda</span></button></li>
+          <li><button class="sb-btn" data-target="profil"><span class="sb-icon"><i class="fas fa-user"></i></span><span class="sb-text">Profil</span></button></li>
+          <li><button class="sb-btn" data-target="resume"><span class="sb-icon"><i class="fas fa-graduation-cap"></i></span><span class="sb-text">Resume</span></button></li>
+          <li><button class="sb-btn" data-target="portfolio"><span class="sb-icon"><i class="fas fa-images"></i></span><span class="sb-text">Portfolio</span></button></li>
+          <li><button class="sb-btn" data-target="kontak"><span class="sb-icon"><i class="fas fa-paper-plane"></i></span><span class="sb-text">Kontak Saya</span></button></li>
+        </ul>
+      </nav>
+
+      <div class="sb-divider"></div>
+
+      <div class="sb-info-section">
+        <span class="sb-nav-label">Informasi</span>
+        <div class="sb-info-item"><i class="fas fa-map-marker-alt"></i><span>Batam, Indonesia</span></div>
+        <div class="sb-info-item"><i class="fas fa-university"></i><span>UIB · Teknik Informatika</span></div>
+        <div class="sb-info-item"><i class="fas fa-layer-group"></i><span>Semester 2</span></div>
+      </div>
+
+      <div class="sb-divider"></div>
+
+      <div class="sb-social">
+        <a class="sb-social-btn" href="https://github.com/KhairArrayyannmhs01" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a class="sb-social-btn" href="https://www.linkedin.com/in/m-khair-ar-rayyan-1b9251386/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a class="sb-social-btn" href="https://www.instagram.com/khair.arryynn/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <div class="sb-footer">
+        <span>© 2025 M. Khair Arrayyan</span>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+      <div class="portfolio-wrap">
+
+        <!-- HERO CARD -->
+        <div class="hero-card">
+          <div class="hero-inner">
+            <div class="hero-avatar-col">
+              <div class="avatar-wrapper">
+                <img src="assets/images/profile.jpg" alt="M.Khair Arrayyan"
+                  onerror="this.src='https://ui-avatars.com/api/?name=MK&background=162844&color=2563eb&size=200&bold=true&font-size=0.42'">
+                <span class="avatar-badge"></span>
+              </div>
+              <div class="hero-meta">
+                <h1>M.Khair Arrayyan</h1>
+                <p class="role">Mahasiswa · <span>UIB Batam</span></p>
+                <span class="status-pill">Aktif</span>
+                <div class="hero-social">
+                  <a class="social-btn" href="https://github.com/KhairArrayyannmhs01" title="GitHub"><i class="fab fa-github"></i></a>
+                  <a class="social-btn" href="https://www.linkedin.com/in/m-khair-ar-rayyan-1b9251386/" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                  <a class="social-btn" href="https://www.instagram.com/khair.arryynn/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="hero-contact-col">
+              <div class="contact-item"><i class="fas fa-envelope"></i><span>khairarrayyan@gmail.com</span></div>
+              <div class="contact-item"><i class="fas fa-phone"></i><span>+62 878 6381 3426</span></div>
+              <div class="contact-item"><i class="fas fa-calendar"></i><span>04 Oktober 2007</span></div>
+            </div>
+            <div class="hero-location-col">
+              <i class="fas fa-map-marker-alt"></i>
+              <p><strong>Batam, Indonesia</strong>Universitas Internasional Batam</p>
             </div>
           </div>
-        </div>
 
-        <!-- Contact Info -->
-        <div class="hero-contact-col">
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2c3c9d7ccd6d7c5c3d1cddbc3cce2c5cfc3cbce8cc1cdcf">[email&#160;protected]</a></span>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-phone"></i>
-            <span>+62 878 6381 3426</span>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-calendar"></i>
-            <span>04 Oktober 2007</span>
+          <!-- TAB NAV -->
+          <div class="tab-nav">
+            <ul>
+              <li><button class="tab-btn active" data-target="beranda"><i class="fas fa-home"></i> Beranda</button></li>
+              <li><button class="tab-btn" data-target="profil"><i class="fas fa-user"></i> Profil</button></li>
+              <li><button class="tab-btn" data-target="resume"><i class="fas fa-graduation-cap"></i> Resume</button></li>
+              <li><button class="tab-btn" data-target="portfolio"><i class="fas fa-images"></i> Portfolio</button></li>
+              <li><button class="tab-btn" data-target="kontak"><i class="fas fa-paper-plane"></i> Kontak Saya</button></li>
+            </ul>
           </div>
         </div>
-
-        <!-- Location -->
-        <div class="hero-location-col">
-          <i class="fas fa-map-marker-alt"></i>
-          <p>
-            <strong>Batam, Indonesia</strong>
-            Universitas Internasional Batam
-          </p>
-        </div>
-
-      </div><!-- /hero-inner -->
-
-      <!-- ── TAB NAVIGATION ─────────────────────────────────────── -->
-      <div class="tab-nav">
-        <ul>
-          <li>
-            <button class="tab-btn active" data-target="beranda">
-              <i class="fas fa-home"></i> Beranda
-            </button>
-          </li>
-          <li>
-            <button class="tab-btn" data-target="profil">
-              <i class="fas fa-user"></i> Profil
-            </button>
-          </li>
-          <li>
-            <button class="tab-btn" data-target="resume">
-              <i class="fas fa-graduation-cap"></i> Resume
-            </button>
-          </li>
-          <li>
-            <button class="tab-btn" data-target="portfolio">
-              <i class="fas fa-images"></i> Portfolio
-            </button>
-          </li>
-          <li>
-            <button class="tab-btn" data-target="kontak">
-              <i class="fas fa-paper-plane"></i> Kontak Saya
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div><!-- /hero-card -->
 
 
     <!-- ══════════════════════════════════════════════════════════
@@ -339,7 +360,16 @@
             <div class="timeline-year">2025 – Sekarang</div>
             <div class="timeline-level">Perguruan Tinggi Negeri</div>
             <div class="timeline-school">Universitas Internasional Batam</div>
-            <div class="timeline-desc">Program Studi Teknik Informatika · Semester 2 · Batam, Kepulauan Riau</div>
+            <div class="timeline-desc">Program Studi sistem Informasi · Semester 2 · Batam, Kepulauan Riau</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2024 – 2025</div>
+            <div class="timeline-level">Magang SMK</div>
+            <div class="timeline-school">PT PGN Solution Batam</div>
           </div>
         </div>
 
@@ -564,29 +594,42 @@
 
   <!-- ══ JAVASCRIPT ═════════════════════════════════════════════════ -->
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    /* ── Tab switching ─────────────────────────────────────────────── */
-    const tabBtns  = document.querySelectorAll('.tab-btn');
-    const panels   = document.querySelectorAll('.panel');
+    /* ── Sidebar ───────────────────────────────────────────────────── */
+    const sidebar        = document.getElementById('sidebar');
+    const sidebarToggle  = document.getElementById('sidebarToggle');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+    function openSidebar()  { sidebar.classList.add('open'); sidebarOverlay.classList.add('show'); }
+    function closeSidebar() { sidebar.classList.remove('open'); sidebarOverlay.classList.remove('show'); }
 
-        const target = btn.dataset.target;
-        panels.forEach(p => {
-          p.classList.remove('active');
-          if (p.id === 'panel-' + target) {
-            p.classList.add('active');
-            if (target === 'profil') triggerSkillBars();
-          }
-        });
+    sidebarToggle.addEventListener('click', () =>
+      sidebar.classList.contains('open') ? closeSidebar() : openSidebar()
+    );
+    sidebarOverlay.addEventListener('click', closeSidebar);
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    /* ── Tab switching (synced tab-nav + sidebar) ─────────────────── */
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const sbBtns  = document.querySelectorAll('.sb-btn');
+    const panels  = document.querySelectorAll('.panel');
+
+    function switchTab(target) {
+      tabBtns.forEach(b => b.classList.toggle('active', b.dataset.target === target));
+      sbBtns.forEach(b  => b.classList.toggle('active', b.dataset.target === target));
+      panels.forEach(p  => {
+        p.classList.remove('active');
+        if (p.id === 'panel-' + target) {
+          p.classList.add('active');
+          if (target === 'profil') triggerSkillBars();
+        }
       });
-    });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      closeSidebar();
+    }
 
-    /* ── Skill bar animation ───────────────────────────────────────── */
+    tabBtns.forEach(b => b.addEventListener('click', () => switchTab(b.dataset.target)));
+    sbBtns.forEach(b  => b.addEventListener('click', () => switchTab(b.dataset.target)));
+
+    /* ── Skill bars ────────────────────────────────────────────────── */
     let barsAnimated = false;
     function triggerSkillBars() {
       if (barsAnimated) return;
@@ -596,7 +639,7 @@
       });
     }
 
-    /* ── Gallery lightbox ──────────────────────────────────────────── */
+    /* ── Lightbox ──────────────────────────────────────────────────── */
     const lightbox = document.getElementById('lightbox');
     const lbImg    = document.getElementById('lb-img');
     const lbClose  = document.getElementById('lb-close');
@@ -604,23 +647,25 @@
     document.querySelectorAll('.gallery-item').forEach(item => {
       item.addEventListener('click', () => {
         const img = item.querySelector('img');
-        if (!img) return;
-        lbImg.src = img.src;
-        lightbox.classList.add('open');
+        if (img) { lbImg.src = img.src; lightbox.classList.add('open'); }
       });
     });
 
-    function closeLightbox() { lightbox.classList.remove('open'); }
+    document.querySelectorAll('.pt-row').forEach(row => {
+      function openRow() { if (row.dataset.img) { lbImg.src = row.dataset.img; lightbox.classList.add('open'); } }
+      row.addEventListener('click', openRow);
+      const btn = row.querySelector('.pt-view-btn');
+      if (btn) btn.addEventListener('click', e => { e.stopPropagation(); openRow(); });
+    });
 
+    function closeLightbox() { lightbox.classList.remove('open'); }
     lbClose.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
     /* ── Scroll-to-top ─────────────────────────────────────────────── */
     const scrollTopBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', () => {
-      scrollTopBtn.classList.toggle('show', window.scrollY > 280);
-    });
+    window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('show', window.scrollY > 280));
     scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     /* ── Portfolio table row → lightbox ───────────────────────────── */
@@ -635,6 +680,20 @@
       row.addEventListener('click', openRow);
       if (btn) btn.addEventListener('click', e => { e.stopPropagation(); openRow(); });
     });
+    document.getElementById('sendBtn').addEventListener('click', function() {
+      this.innerHTML = '<i class="fas fa-check"></i> Pesan Berhasil Dikirim!';
+      this.style.background = '#16a34a';
+      this.style.boxShadow  = '0 4px 14px rgba(22,163,74,0.35)';
+      this.disabled = true;
+      setTimeout(() => {
+        this.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Pesan';
+        this.style.background = '';
+        this.style.boxShadow  = '';
+        this.disabled = false;
+      }, 3000);
+    });
+
+    /* ── Send button ───────────────────────────────────────────────── */
     document.getElementById('sendBtn').addEventListener('click', function() {
       this.innerHTML = '<i class="fas fa-check"></i> Pesan Berhasil Dikirim!';
       this.style.background = '#16a34a';
