@@ -5,971 +5,1923 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>M. Khair Arrayyan — Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+
+  /* ═══════════════════════════════════════════════
+     DESIGN TOKENS — Navy · Royal Blue · Gold
+  ═══════════════════════════════════════════════ */
   :root {
-    --navy-deepest: #04080f;
-    --navy-deep:    #080f1c;
-    --navy-mid:     #0d1930;
-    --navy-panel:   #111f3a;
-    --navy-card:    #142244;
-    --navy-border:  #1e3260;
-    --navy-hover:   #1a2e58;
-    --gold:         #c9a84c;
-    --gold-light:   #e8c97a;
-    --gold-pale:    #f5e4b0;
-    --gold-dark:    #8f6d28;
-    --gold-muted:   rgba(201,168,76,0.12);
-    --gold-glow:    rgba(201,168,76,0.22);
-    --white:        #ffffff;
-    --white-soft:   #f8f9fc;
-    --white-muted:  #eef0f5;
-    --white-panel:  rgba(255,255,255,0.96);
-    --white-border: rgba(201,168,76,0.2);
-    --text-white:   #f0ece4;
-    --text-light:   #c8c4bc;
-    --text-mid:     #7e8ba8;
-    --text-dim:     #3d4e6e;
-    --text-dark:    #1a2540;
-    --green:        #4caf8a;
-    --green-pale:   rgba(76,175,138,0.12);
-    --amber:        #e8a030;
-    --amber-pale:   rgba(232,160,48,0.1);
-    --radius-sm:    6px;
-    --radius-md:    10px;
-    --radius-lg:    16px;
-    --sidebar-l:    270px;
-    --sidebar-r:    210px;
-    --shadow-card:  0 4px 24px rgba(0,0,0,0.35);
-    --shadow-white: 0 4px 24px rgba(0,0,0,0.10);
+    /* ── Backgrounds & Struktur ── */
+    --navy-dark:    #0e1c35;   /* hero, sidebar utama               */
+    --navy-mid:     #162844;   /* tab nav, card header              */
+    --navy-light:   #1e3a5f;   /* aksen elemen navy                 */
+
+    /* ── Aksen Interaktif ── */
+    --blue:         #2563eb;   /* tombol, border aktif, ikon        */
+    --blue-hover:   #1d4fd8;   /* hover state                       */
+    --blue-soft:    rgba(37,99,235,0.08);
+    --blue-muted:   rgba(37,99,235,0.14);
+    --blue-border:  rgba(37,99,235,0.30);
+
+    --gold:         #c9a84c;   /* quote, dekoratif, gradient        */
+    --gold-hover:   #dfc06a;
+    --gold-dark:    #9a7228;
+    --gold-soft:    rgba(201,168,76,0.10);
+    --gold-muted:   rgba(201,168,76,0.18);
+    --gold-border:  rgba(201,168,76,0.30);
+
+    /* ── Permukaan Konten ── */
+    --surface-white:  #ffffff;   /* card utama                      */
+    --surface-page:   #f4f6fb;   /* background halaman, input       */
+    --surface-hover:  #eef1f9;   /* baris tabel hover               */
+
+    /* ── Teks ── */
+    --text-heading:   #0e1c35;   /* heading utama                   */
+    --text-body:      #3d4f6b;   /* body text                       */
+    --text-muted:     #7a8ba8;   /* label, placeholder, caption     */
+
+    /* ── Border ── */
+    --border:         #dde3ef;   /* border card normal              */
+    --border-active:  #2563eb;   /* border hover/aktif              */
+
+    /* ── Status ── */
+    --green:        #16a34a;
+    --green-soft:   rgba(22,163,74,0.10);
+    --amber:        #d97706;
+    --amber-soft:   rgba(217,119,6,0.10);
+
+    /* ── Sizing ── */
+    --sidebar-l:    268px;
+    --sidebar-r:    218px;
+    --radius-xs:    4px;
+    --radius-sm:    8px;
+    --radius-md:    12px;
+    --radius-lg:    18px;
+
+    /* ── Shadows ── */
+    --shadow-xs:  0 1px 3px rgba(14,28,53,0.08);
+    --shadow-sm:  0 2px 8px  rgba(14,28,53,0.09);
+    --shadow-md:  0 4px 20px rgba(14,28,53,0.11);
+    --shadow-lg:  0 8px 40px rgba(14,28,53,0.14);
+    --shadow-blue:0 4px 20px rgba(37,99,235,0.20);
+    --shadow-gold:0 4px 20px rgba(201,168,76,0.22);
   }
 
-  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-  ::-webkit-scrollbar{width:5px;height:5px;}
-  ::-webkit-scrollbar-track{background:var(--navy-deepest);}
-  ::-webkit-scrollbar-thumb{background:var(--navy-border);border-radius:3px;}
-  ::-webkit-scrollbar-thumb:hover{background:var(--gold-dark);}
+  /* ── Reset ── */
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface-page);
+    color: var(--text-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
 
-  body{
-    font-family:'DM Sans',sans-serif;
-    background:var(--navy-deepest);
-    color:var(--text-light);
-    min-height:100vh;
-    overflow-x:hidden;
-    line-height:1.6;
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: var(--surface-page); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+  /* ═══════════════════════════════════════════════
+     LAYOUT
+  ═══════════════════════════════════════════════ */
+  .layout {
+    display: flex;
+    min-height: 100vh;
   }
 
-  .orb{position:fixed;border-radius:50%;pointer-events:none;filter:blur(100px);z-index:0;}
-  .orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(14,32,74,0.5) 0%,transparent 70%);top:-250px;left:150px;}
-  .orb-2{width:350px;height:350px;background:radial-gradient(circle,rgba(201,168,76,0.04) 0%,transparent 70%);bottom:80px;right:80px;}
-  .orb-3{width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,0.015) 0%,transparent 70%);top:40%;left:40%;}
-
-  /* ═══ LAYOUT ═══ */
-  .page-layout{
-    position:relative;z-index:2;
-    display:grid;
-    grid-template-columns:var(--sidebar-l) 1fr var(--sidebar-r);
-    min-height:100vh;
-    max-width:1440px;
-    margin:0 auto;
+  /* ═══════════════════════════════════════════════
+     LEFT SIDEBAR
+     Background: #0e1c35 (navy-dark)
+     Tab nav area: #162844 (navy-mid)
+  ═══════════════════════════════════════════════ */
+  .sidebar-left {
+    width: var(--sidebar-l);
+    flex-shrink: 0;
+    position: fixed;
+    top: 0; left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--navy-dark);
+    border-right: 1px solid var(--navy-light);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
   }
 
-  /* ═══ LEFT SIDEBAR ═══ */
-  .sidebar-left{
-    position:sticky;top:0;
-    height:100vh;overflow-y:auto;
-    background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy-deepest) 100%);
-    border-right:1px solid var(--navy-border);
-    display:flex;flex-direction:column;
-  }
-  .sidebar-left::before{
-    content:'';display:block;height:2px;flex-shrink:0;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  /* Gold top stripe */
+  .sidebar-left::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-hover), var(--gold));
+    flex-shrink: 0;
   }
 
-  .sb-top{padding:26px 22px 20px;border-bottom:1px solid var(--navy-border);}
-  .sb-monogram{font-family:'Cinzel',serif;font-size:10px;font-weight:600;letter-spacing:4px;color:var(--gold);margin-bottom:2px;}
-  .sb-monogram-sub{font-size:9px;color:var(--text-dim);letter-spacing:2px;font-weight:300;}
-
-  .sb-avatar-wrap{
-    padding:24px 22px 20px;
-    display:flex;flex-direction:column;align-items:center;gap:12px;
-    border-bottom:1px solid var(--navy-border);
-  }
-  .sb-avatar-frame{position:relative;width:84px;height:84px;}
-  .sb-avatar-frame::before{
-    content:'';position:absolute;inset:-2px;border-radius:50%;
-    background:conic-gradient(var(--gold) 0deg,var(--gold-light) 90deg,var(--gold-dark) 180deg,var(--gold-light) 270deg,var(--gold) 360deg);
-    animation:ring-spin 8s linear infinite;
-  }
-  @keyframes ring-spin{to{transform:rotate(360deg);}}
-  .sb-avatar-inner{
-    position:absolute;inset:2px;border-radius:50%;
-    background:var(--navy-card);
-    display:flex;align-items:center;justify-content:center;overflow:hidden;
-  }
-  .sb-avatar-inner img{width:100%;height:100%;object-fit:cover;}
-  .sb-status-dot{
-    position:absolute;bottom:4px;right:4px;
-    width:13px;height:13px;background:var(--green);
-    border-radius:50%;border:2px solid var(--navy-deep);
-    animation:pulse-dot 2.5s ease infinite;
-  }
-  @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(76,175,138,0.5);}50%{box-shadow:0 0 0 5px rgba(76,175,138,0);}}
-
-  .sb-fullname{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--text-white);text-align:center;}
-  .sb-role-tag{
-    font-size:10px;color:var(--gold);
-    background:var(--gold-muted);border:1px solid rgba(201,168,76,0.25);
-    border-radius:20px;padding:3px 12px;letter-spacing:1px;font-weight:500;
+  /* Brand */
+  .sb-brand {
+    padding: 20px 22px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
-  .sb-nav{flex:1;padding:14px 0 8px;}
-  .sb-nav-label{
-    font-size:8px;letter-spacing:3px;color:var(--text-dim);
-    padding:0 22px 8px;display:block;text-transform:uppercase;font-weight:500;
-  }
-  .sb-nav-item{
-    display:flex;align-items:center;gap:12px;
-    padding:11px 22px;cursor:pointer;
-    font-size:12px;color:var(--text-mid);
-    border:none;background:none;width:100%;text-align:left;
-    font-family:'DM Sans',sans-serif;font-weight:400;
-    transition:all 0.25s;border-left:2px solid transparent;
-  }
-  .sb-nav-item:hover{color:var(--gold-light);background:var(--gold-muted);border-left-color:rgba(201,168,76,0.4);}
-  .sb-nav-item.active{color:var(--gold);background:var(--gold-muted);border-left-color:var(--gold);font-weight:500;}
-  .sb-nav-icon{
-    width:30px;height:30px;border-radius:var(--radius-sm);
-    background:rgba(255,255,255,0.03);border:1px solid var(--navy-border);
-    display:flex;align-items:center;justify-content:center;
-    font-size:11px;color:var(--text-dim);flex-shrink:0;transition:all 0.25s;
-  }
-  .sb-nav-item.active .sb-nav-icon,.sb-nav-item:hover .sb-nav-icon{
-    background:var(--gold-muted);border-color:rgba(201,168,76,0.35);color:var(--gold);
-  }
-  .sb-nav-num{font-size:9px;color:var(--text-dim);margin-left:auto;font-weight:300;letter-spacing:1px;}
-  .sb-nav-item.active .sb-nav-num{color:var(--gold-dark);}
-
-  /* Active indicator pill */
-  .sb-nav-indicator{
-    width:6px;height:6px;border-radius:50%;background:var(--gold);
-    margin-left:auto;flex-shrink:0;display:none;
-    box-shadow:0 0 6px rgba(201,168,76,0.6);
-  }
-  .sb-nav-item.active .sb-nav-indicator{display:block;}
-  .sb-nav-item.active .sb-nav-num{display:none;}
-
-  .sb-bottom{padding:16px 22px;border-top:1px solid var(--navy-border);margin-top:auto;}
-  .sb-info-row{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--text-dim);margin-bottom:7px;font-weight:300;}
-  .sb-info-row i{font-size:10px;color:var(--gold-dark);width:14px;text-align:center;}
-  .sb-social-row{display:flex;gap:7px;margin-top:14px;padding-top:14px;border-top:1px solid var(--navy-border);}
-  .sb-social-btn{
-    width:32px;height:32px;border-radius:var(--radius-sm);
-    background:rgba(255,255,255,0.03);border:1px solid var(--navy-border);
-    color:var(--text-dim);font-size:12px;display:flex;align-items:center;justify-content:center;
-    text-decoration:none;transition:all 0.25s;
-  }
-  .sb-social-btn:hover{background:var(--gold-muted);border-color:rgba(201,168,76,0.4);color:var(--gold);transform:translateY(-2px);}
-  .sb-copy{font-size:9px;color:var(--text-dim);text-align:center;padding:12px 22px;border-top:1px solid var(--navy-border);letter-spacing:1px;font-weight:300;}
-
-  /* ═══ RIGHT SIDEBAR ═══ */
-  .sidebar-right{
-    position:sticky;top:0;height:100vh;overflow-y:auto;
-    background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy-deepest) 100%);
-    border-left:1px solid var(--navy-border);
-    padding:0 14px 20px;
-    display:flex;flex-direction:column;gap:12px;
-  }
-  .sidebar-right::before{
-    content:'';display:block;height:2px;flex-shrink:0;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
-    margin:0 -14px 20px;
+  .sb-brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
   }
 
-  .rw{background:var(--navy-panel);border:1px solid var(--navy-border);border-radius:var(--radius-md);overflow:hidden;}
-  .rw-head{
-    padding:9px 14px;background:rgba(201,168,76,0.04);border-bottom:1px solid var(--navy-border);
-    font-size:8px;letter-spacing:3px;color:var(--gold-dark);text-transform:uppercase;
-    display:flex;align-items:center;gap:6px;font-weight:500;
-  }
-  .rw-body{padding:14px;}
-
-  .clock-main{font-family:'Cinzel',serif;font-size:26px;font-weight:600;color:var(--gold);text-align:center;letter-spacing:4px;margin-bottom:5px;}
-  .clock-sub{font-size:9px;color:var(--text-dim);text-align:center;letter-spacing:1px;font-weight:300;}
-
-  .rw-stat{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:10px;border-bottom:1px solid rgba(255,255,255,0.03);}
-  .rw-stat:last-child{border:none;}
-  .rw-stat-label{color:var(--text-mid);font-weight:300;}
-  .rw-stat-val{color:var(--gold);font-weight:600;font-size:11px;}
-
-  .rw-skill{margin-bottom:10px;}
-  .rw-skill:last-child{margin-bottom:0;}
-  .rw-skill-head{display:flex;justify-content:space-between;font-size:9px;margin-bottom:5px;color:var(--text-mid);font-weight:300;}
-  .rw-skill-pct{color:var(--gold);font-weight:500;}
-  .rw-skill-track{height:3px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;}
-  .rw-skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));width:0;transition:width 1.6s cubic-bezier(0.4,0,0.2,1);}
-
-  .rw-quote{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--text-light);line-height:1.7;text-align:center;}
-  .rw-quote-attr{font-size:9px;color:var(--gold-dark);text-align:center;margin-top:8px;letter-spacing:1px;}
-
-  .rw-link{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:10px;color:var(--text-mid);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.03);transition:color 0.2s;font-weight:300;}
-  .rw-link:last-child{border:none;}
-  .rw-link:hover{color:var(--gold);}
-  .rw-link i{color:var(--gold-dark);width:14px;text-align:center;font-size:11px;}
-
-  /* ═══ MAIN CONTENT — SCROLL MODE ═══ */
-  .main-content{min-height:100vh;display:flex;flex-direction:column;background:var(--navy-deepest);}
-
-  /* Topbar REMOVED — replaced with scroll */
-
-  .content-area{flex:1;padding:0;}
-
-  /* Each section is full-height block */
-  .section-block{
-    padding:44px 36px 56px;
-    min-height:100vh;
-    border-bottom:1px solid rgba(255,255,255,0.04);
-    position:relative;
-  }
-  .section-block:last-child{border-bottom:none;}
-
-  /* Section separator line accent */
-  .section-block::before{
-    content:'';position:absolute;top:0;left:36px;right:36px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--navy-border),transparent);
-  }
-  #section-beranda::before{display:none;}
-
-  /* Section scroll label */
-  .section-scroll-label{
-    display:flex;align-items:center;gap:10px;margin-bottom:32px;
-    font-size:8px;letter-spacing:4px;color:var(--text-dim);text-transform:uppercase;font-weight:500;
-  }
-  .section-scroll-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--navy-border),transparent);}
-  .section-scroll-num{
-    width:24px;height:24px;border-radius:50%;
-    background:var(--gold-muted);border:1px solid rgba(201,168,76,0.25);
-    display:flex;align-items:center;justify-content:center;
-    font-size:9px;color:var(--gold);font-weight:600;font-family:'Cinzel',serif;
-    flex-shrink:0;
+  .sb-brand-sub {
+    font-size: 9px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 2px;
+    margin-top: 2px;
+    font-weight: 300;
   }
 
-  /* ═══ WHITE CARD SECTIONS ═══ */
-  /* Hero card on beranda — white version */
-  .hero-card{
-    background:var(--white-panel);
-    border:1px solid rgba(201,168,76,0.18);
-    border-radius:var(--radius-lg);overflow:hidden;margin-bottom:28px;
-    box-shadow:0 8px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.05);
-  }
-  .hero-card::before{content:'';display:block;height:3px;background:linear-gradient(90deg,var(--navy-border) 0%,var(--gold-dark) 20%,var(--gold) 50%,var(--gold-dark) 80%,var(--navy-border) 100%);}
-  .hero-body{padding:38px 40px 34px;display:grid;grid-template-columns:1fr auto auto;gap:32px;align-items:start;}
-  .hero-label{font-size:10px;letter-spacing:4px;color:var(--gold-dark);text-transform:uppercase;margin-bottom:10px;font-weight:500;}
-  .hero-name{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;color:var(--text-dark);line-height:1.1;margin-bottom:8px;letter-spacing:-0.5px;}
-  .hero-name span{color:var(--gold);font-style:italic;}
-  .hero-subtitle{font-size:12px;color:#5a6e8c;letter-spacing:0.5px;margin-bottom:20px;font-weight:300;}
-  .hero-divider{width:40px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:18px;}
-  .hero-desc{font-size:13px;color:#3a4a62;line-height:1.9;max-width:480px;font-weight:300;margin-bottom:28px;}
-  .hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
-
-  /* Hero profile photo (new — right side) */
-  .hero-profile-photo{
-    display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0;
-  }
-  .hero-photo-frame{
-    width:120px;height:140px;border-radius:var(--radius-lg);overflow:hidden;
-    border:2px solid var(--gold);
-    box-shadow:0 8px 24px rgba(201,168,76,0.25),0 0 0 4px rgba(201,168,76,0.08);
-    position:relative;
-  }
-  .hero-photo-frame img{width:100%;height:100%;object-fit:cover;}
-  .hero-photo-frame-placeholder{
-    width:100%;height:100%;background:linear-gradient(135deg,var(--navy-mid),var(--navy-card));
-    display:flex;align-items:center;justify-content:center;
-    font-size:36px;color:var(--gold-dark);
-  }
-  .hero-photo-label{
-    font-size:9px;color:var(--gold-dark);letter-spacing:1.5px;text-transform:uppercase;
-    font-weight:500;text-align:center;
-  }
-  .hero-photo-badge{
-    font-size:9px;color:var(--green);
-    background:var(--green-pale);border:1px solid rgba(76,175,138,0.3);
-    border-radius:20px;padding:2px 10px;
+  /* Avatar */
+  .sb-profile {
+    padding: 22px 22px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
-  .btn-gold{
-    padding:10px 22px;background:var(--gold-muted);border:1px solid rgba(201,168,76,0.4);
-    color:var(--gold-dark);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;
-    font-size:12px;font-weight:500;cursor:pointer;transition:all 0.25s;letter-spacing:0.5px;
+  .sb-avatar-ring {
+    position: relative;
+    width: 82px; height: 82px;
+    flex-shrink: 0;
   }
-  .btn-gold:hover{background:rgba(201,168,76,0.22);border-color:var(--gold);box-shadow:0 0 20px rgba(201,168,76,0.18);transform:translateY(-1px);}
-  .btn-outline{
-    padding:10px 22px;background:transparent;border:1px solid rgba(26,37,64,0.2);
-    color:#5a6e8c;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;
-    font-size:12px;font-weight:400;cursor:pointer;transition:all 0.25s;
+
+  .sb-avatar-ring::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: conic-gradient(var(--gold) 0deg, var(--gold-hover) 90deg, var(--gold-dark) 180deg, var(--gold-hover) 270deg, var(--gold) 360deg);
+    animation: ring-spin 8s linear infinite;
   }
-  .btn-outline:hover{border-color:rgba(201,168,76,0.35);color:var(--gold-dark);background:var(--gold-muted);}
 
-  .hero-meta-block{display:flex;flex-direction:column;gap:9px;min-width:185px;}
-  .hero-meta-item{
-    background:var(--white-muted);border:1px solid rgba(201,168,76,0.15);
-    border-radius:var(--radius-sm);padding:10px 14px;
-    display:flex;align-items:center;gap:10px;transition:border-color 0.2s;
+  @keyframes ring-spin { to { transform: rotate(360deg); } }
+
+  .sb-avatar-img {
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--navy-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .hero-meta-item:hover{border-color:rgba(201,168,76,0.3);}
-  .hero-meta-icon{color:var(--gold-dark);font-size:11px;width:14px;text-align:center;flex-shrink:0;}
-  .hero-meta-text{font-size:11px;color:#3a4a62;font-weight:300;}
 
-  .stat-row-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
-  .stat-c{
-    background:var(--white-panel);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-md);
-    padding:20px 16px;text-align:center;transition:all 0.25s;cursor:default;position:relative;overflow:hidden;
-    box-shadow:var(--shadow-white);
+  .sb-avatar-img img { width:100%; height:100%; object-fit:cover; }
+
+  .sb-status-dot {
+    position: absolute;
+    bottom: 4px; right: 4px;
+    width: 12px; height: 12px;
+    background: #22c55e;
+    border-radius: 50%;
+    border: 2px solid var(--navy-dark);
+    animation: pulse-dot 2.5s ease infinite;
   }
-  .stat-c::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.25s;}
-  .stat-c:hover{border-color:rgba(201,168,76,0.3);box-shadow:0 0 24px rgba(201,168,76,0.08);}
-  .stat-c:hover::after{opacity:1;}
-  .stat-c-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:var(--gold);display:block;line-height:1;margin-bottom:6px;}
-  .stat-c-label{font-size:9px;color:#5a6e8c;letter-spacing:1.5px;text-transform:uppercase;font-weight:400;}
 
-  .info-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;}
-  .info-strip-item{
-    background:var(--white-panel);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-md);
-    padding:14px 16px;display:flex;align-items:center;gap:12px;transition:border-color 0.2s;
-    box-shadow:var(--shadow-white);
+  @keyframes pulse-dot {
+    0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+    50%      { box-shadow: 0 0 0 5px rgba(34,197,94,0); }
   }
-  .info-strip-item:hover{border-color:rgba(201,168,76,0.28);}
-  .isi-icon{width:34px;height:34px;border-radius:var(--radius-sm);background:var(--gold-muted);border:1px solid rgba(201,168,76,0.18);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:13px;flex-shrink:0;}
-  .isi-label{font-size:9px;color:#5a6e8c;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;font-weight:400;}
-  .isi-val{font-size:12px;color:#1a2540;font-weight:400;}
 
-  /* Section heading */
-  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid rgba(201,168,76,0.15);position:relative;}
-  .sec-head::after{content:'';position:absolute;bottom:-1px;left:0;width:60px;height:1px;background:var(--gold);}
-  .sec-head-icon{width:40px;height:40px;border-radius:var(--radius-md);background:var(--gold-muted);border:1px solid rgba(201,168,76,0.28);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex-shrink:0;}
-  .sec-head h2{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--white);letter-spacing:2px;}
-  .sec-head p{font-size:10px;color:var(--text-dim);margin-top:3px;font-weight:300;}
-  .sec-badge{margin-left:auto;font-size:9px;padding:4px 12px;border-radius:20px;border:1px solid;letter-spacing:1px;font-weight:500;white-space:nowrap;}
-  .badge-gold{color:var(--gold);border-color:rgba(201,168,76,0.3);background:var(--gold-muted);}
-  .badge-green{color:var(--green);border-color:rgba(76,175,138,0.3);background:var(--green-pale);}
-
-  /* ═══ WHITE TABLES ═══ */
-  .tbl-wrap{
-    background:var(--white-panel);border:1px solid rgba(201,168,76,0.12);
-    border-radius:var(--radius-md);overflow:hidden;margin-bottom:20px;
-    box-shadow:var(--shadow-white);
+  .sb-fullname {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 0.2px;
   }
-  .tbl-label{
-    padding:11px 20px;
-    background:linear-gradient(90deg,rgba(201,168,76,0.08),rgba(255,255,255,0.5));
-    border-bottom:1px solid rgba(201,168,76,0.12);
-    font-size:9px;letter-spacing:3px;color:var(--gold-dark);text-transform:uppercase;
-    display:flex;align-items:center;gap:8px;font-weight:500;
+
+  .sb-role-badge {
+    display: inline-block;
+    font-size: 10px;
+    color: var(--gold);
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    letter-spacing: 0.8px;
+    font-weight: 500;
   }
-  table{width:100%;border-collapse:collapse;}
-  thead th{
-    background:rgba(201,168,76,0.04);padding:10px 20px;text-align:left;
-    font-size:8px;letter-spacing:2px;color:#5a6e8c;text-transform:uppercase;
-    border-bottom:1px solid rgba(201,168,76,0.1);font-weight:500;
+
+  /* Navigation — tab nav bg: #162844 */
+  .sb-nav {
+    flex: 1;
+    padding: 14px 0 8px;
+    background: var(--navy-dark);
   }
-  tbody tr{border-bottom:1px solid rgba(0,0,0,0.04);transition:background 0.15s;}
-  tbody tr:last-child{border:none;}
-  tbody tr:hover{background:rgba(201,168,76,0.04);}
-  tbody td{padding:12px 20px;font-size:12px;color:#2a3a52;vertical-align:middle;font-weight:300;}
-  .td-key{font-size:11px;color:#5a6e8c;width:36%;font-weight:400;}
-  .td-sep{color:rgba(201,168,76,0.4);width:16px;}
-  .td-gold{color:var(--gold-dark);font-weight:500;}
-  .td-green{color:var(--green);}
 
-  .pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:9px;border:1px solid;font-weight:500;letter-spacing:0.5px;white-space:nowrap;}
-  .pill-gold{color:var(--gold-dark);border-color:rgba(201,168,76,0.35);background:rgba(201,168,76,0.08);}
-  .pill-green{color:var(--green);border-color:rgba(76,175,138,0.3);background:var(--green-pale);}
-  .pill-navy{color:#5a6e8c;border-color:rgba(30,50,96,0.2);background:rgba(26,37,64,0.05);}
-  .pill-amber{color:var(--amber);border-color:rgba(232,160,48,0.3);background:var(--amber-pale);}
-
-  /* ═══ EDUCATION ═══ */
-  .timeline-wrap{position:relative;padding-left:24px;margin-top:6px;}
-  .timeline-wrap::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-dark) 60%,transparent 100%);}
-  .tl-item{position:relative;padding:0 0 26px 28px;}
-  .tl-item::before{content:'';position:absolute;left:-5px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--navy-deepest);box-shadow:0 0 8px rgba(201,168,76,0.4);}
-  .tl-period{font-size:10px;color:var(--gold-dark);letter-spacing:1px;font-weight:500;margin-bottom:4px;}
-  .tl-level{font-size:9px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;font-weight:400;}
-  .tl-school{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--text-white);margin-bottom:3px;}
-  .tl-detail{font-size:11px;color:var(--text-mid);font-weight:300;}
-  .tl-badge{display:inline-block;margin-top:7px;padding:3px 10px;border-radius:4px;font-size:9px;letter-spacing:0.5px;}
-
-  /* ═══ SKILLS ═══ */
-  .skill-bar-track{width:130px;height:4px;background:rgba(0,0,0,0.06);border-radius:2px;overflow:hidden;}
-  .skill-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));width:0;transition:width 1.6s cubic-bezier(0.4,0,0.2,1);}
-  .skill-pct{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--gold-dark);width:48px;text-align:right;}
-
-  .chip-grid{display:flex;flex-wrap:wrap;gap:8px;padding:16px 20px;}
-  .tech-chip{
-    padding:5px 13px;border-radius:var(--radius-sm);font-size:10px;
-    background:var(--white-muted);border:1px solid rgba(201,168,76,0.18);
-    color:#3a4a62;font-weight:400;letter-spacing:0.3px;transition:all 0.2s;cursor:default;
+  .sb-nav-label {
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.22);
+    padding: 0 22px 8px;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 500;
   }
-  .tech-chip:hover{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.4);color:var(--gold-dark);}
 
-  /* ═══ PORTFOLIO ═══ */
-  .pt-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:4px;font-size:9px;border:1px solid;letter-spacing:0.5px;font-weight:500;}
-  .pt-badge.web{color:var(--gold-dark);border-color:rgba(201,168,76,0.3);background:rgba(201,168,76,0.08);}
-  .pt-badge.sys{color:var(--green);border-color:rgba(76,175,138,0.3);background:var(--green-pale);}
-  .pt-badge.game{color:var(--amber);border-color:rgba(232,160,48,0.3);background:var(--amber-pale);}
-  .code-chip{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);color:#5a6e8c;margin:1px;}
-  .status-done{color:var(--green);font-size:10px;font-weight:400;}
-  .status-wip{color:var(--amber);font-size:10px;font-weight:400;}
-  .view-btn{
-    padding:5px 14px;background:var(--gold-muted);border:1px solid rgba(201,168,76,0.3);
-    color:var(--gold-dark);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;
-    font-size:10px;font-weight:500;cursor:pointer;transition:all 0.2s;
+  .sb-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 22px;
+    cursor: pointer;
+    font-size: 12px;
+    color: rgba(255,255,255,0.50);
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    transition: all 0.22s ease;
+    border-left: 2px solid transparent;
+    letter-spacing: 0.2px;
   }
-  .view-btn:hover{background:rgba(201,168,76,0.2);border-color:var(--gold);box-shadow:0 0 12px rgba(201,168,76,0.12);}
 
-  /* ═══ CONTACT ═══ */
-  .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-  .field-wrap{margin-bottom:15px;}
-  .field-lbl{display:block;font-size:10px;color:#5a6e8c;margin-bottom:6px;letter-spacing:0.5px;font-weight:400;}
-  .field-lbl span{color:var(--gold-dark);}
-  .field-inp{width:100%;background:var(--white-muted);border:1px solid rgba(201,168,76,0.18);border-radius:var(--radius-sm);padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:12px;color:#1a2540;outline:none;transition:border 0.2s;font-weight:300;}
-  .field-inp:focus{border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.02);box-shadow:0 0 0 3px rgba(201,168,76,0.05);}
-  textarea.field-inp{resize:vertical;min-height:90px;}
-  .send-btn{width:100%;padding:12px;background:var(--gold-muted);border:1px solid rgba(201,168,76,0.4);color:var(--gold-dark);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.25s;letter-spacing:0.5px;}
-  .send-btn:hover{background:rgba(201,168,76,0.2);border-color:var(--gold);box-shadow:0 4px 20px rgba(201,168,76,0.15);transform:translateY(-1px);}
-
-  .map-frame{border-radius:var(--radius-sm);overflow:hidden;height:175px;border:1px solid rgba(201,168,76,0.15);margin-bottom:12px;}
-  .map-frame iframe{width:100%;height:100%;display:block;filter:invert(92%) hue-rotate(180deg) saturate(0.7) brightness(0.85);}
-  .map-footer{display:flex;justify-content:space-between;align-items:center;}
-  .map-coords{font-size:9px;color:#5a6e8c;letter-spacing:0.5px;font-weight:300;}
-
-  /* Scroll top */
-  .scroll-top-btn{
-    position:fixed;bottom:28px;right:calc(var(--sidebar-r) + 22px);
-    width:38px;height:38px;background:var(--gold-muted);border:1px solid rgba(201,168,76,0.35);
-    color:var(--gold);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;
-    cursor:pointer;font-size:12px;opacity:0;pointer-events:none;transition:all 0.3s;z-index:50;
-    box-shadow:0 4px 16px rgba(0,0,0,0.3);
+  .sb-link:hover {
+    color: rgba(255,255,255,0.88);
+    background: rgba(37,99,235,0.12);
+    border-left-color: rgba(37,99,235,0.5);
   }
-  .scroll-top-btn.show{opacity:1;pointer-events:all;}
-  .scroll-top-btn:hover{background:rgba(201,168,76,0.2);transform:translateY(-2px);}
 
-  .mob-menu{display:none;position:fixed;top:12px;left:12px;z-index:200;background:var(--navy-panel);border:1px solid var(--navy-border);color:var(--gold);width:38px;height:38px;border-radius:var(--radius-sm);align-items:center;justify-content:center;cursor:pointer;font-size:14px;}
-
-  /* White section blocks (alternating) */
-  #section-beranda{background:var(--navy-deepest);}
-  #section-biodata{background:var(--white-soft);}
-  #section-biodata .sec-head h2{color:var(--text-dark);}
-  #section-biodata .sec-head p{color:#5a6e8c;}
-  #section-biodata .section-scroll-label{color:#5a6e8c;}
-  #section-pendidikan{background:var(--navy-deepest);}
-  #section-keahlian{background:var(--white-soft);}
-  #section-keahlian .sec-head h2{color:var(--text-dark);}
-  #section-keahlian .sec-head p{color:#5a6e8c;}
-  #section-keahlian .section-scroll-label{color:#5a6e8c;}
-  #section-keahlian .tl-school{color:var(--text-dark);}
-  #section-portfolio{background:var(--navy-deepest);}
-  #section-kontak{background:var(--white-soft);}
-  #section-kontak .sec-head h2{color:var(--text-dark);}
-  #section-kontak .sec-head p{color:#5a6e8c;}
-  #section-kontak .section-scroll-label{color:#5a6e8c;}
-
-  /* White section overrides for dark tables */
-  #section-biodata .tbl-label,
-  #section-keahlian .tbl-label,
-  #section-kontak .tbl-label{color:var(--gold-dark);}
-
-  /* Dark section white-light tables */
-  #section-beranda .tbl-wrap,
-  #section-pendidikan .tbl-wrap,
-  #section-portfolio .tbl-wrap{
-    background:var(--navy-panel);border-color:var(--navy-border);
-    box-shadow:var(--shadow-card);
+  .sb-link.active {
+    color: #ffffff;
+    background: rgba(37,99,235,0.18);
+    border-left-color: var(--blue);
+    font-weight: 500;
   }
-  #section-beranda .tbl-label,
-  #section-pendidikan .tbl-label,
-  #section-portfolio .tbl-label{color:var(--gold-dark);background:rgba(201,168,76,0.04);}
-  #section-beranda thead th,
-  #section-pendidikan thead th,
-  #section-portfolio thead th{color:var(--text-dim);background:rgba(0,0,0,0.18);}
-  #section-beranda tbody td,
-  #section-pendidikan tbody td,
-  #section-portfolio tbody td{color:var(--text-light);}
-  #section-beranda .td-key,
-  #section-pendidikan .td-key,
-  #section-portfolio .td-key{color:var(--text-mid);}
-  #section-beranda tbody tr:hover,
-  #section-pendidikan tbody tr:hover,
-  #section-portfolio tbody tr:hover{background:rgba(201,168,76,0.025);}
-  #section-beranda tbody tr,
-  #section-pendidikan tbody tr,
-  #section-portfolio tbody tr{border-bottom-color:rgba(255,255,255,0.03);}
 
-  #section-pendidikan .tbl-wrap{background:var(--navy-panel);border-color:var(--navy-border);}
-  #section-pendidikan .stat-c{background:var(--navy-panel);border-color:var(--navy-border);}
-  #section-pendidikan .stat-c-label{color:var(--text-dim);}
-  #section-pendidikan .info-strip-item{background:var(--navy-panel);border-color:var(--navy-border);}
-  #section-pendidikan .isi-label{color:var(--text-dim);}
-  #section-pendidikan .isi-val{color:var(--text-light);}
+  .sb-link-icon {
+    width: 30px; height: 30px;
+    border-radius: var(--radius-xs);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: rgba(255,255,255,0.30);
+    flex-shrink: 0;
+    transition: all 0.22s;
+  }
 
-  /* ═══ RESPONSIVE ═══ */
-  @media(max-width:1200px){
-    .sidebar-right{display:none;}
-    .page-layout{grid-template-columns:var(--sidebar-l) 1fr;}
-    .scroll-top-btn{right:22px;}
+  .sb-link.active .sb-link-icon {
+    background: rgba(37,99,235,0.22);
+    border-color: rgba(37,99,235,0.45);
+    color: #93b4fd;
   }
-  @media(max-width:900px){
-    .stat-row-grid{grid-template-columns:repeat(2,1fr);}
-    .hero-body{grid-template-columns:1fr;}
-    .hero-meta-block{flex-direction:row;flex-wrap:wrap;}
-    .hero-profile-photo{display:none;}
+
+  .sb-link:hover .sb-link-icon {
+    background: rgba(37,99,235,0.14);
+    border-color: rgba(37,99,235,0.30);
+    color: #93b4fd;
   }
-  @media(max-width:768px){
-    .page-layout{grid-template-columns:1fr;}
-    .sidebar-left{position:fixed;left:-100%;z-index:150;transition:left 0.3s ease;height:100vh;}
-    .sidebar-left.open{left:0;}
-    .mob-menu{display:flex;}
-    .contact-layout{grid-template-columns:1fr;}
-    .section-block{padding:32px 20px 48px;}
-    .hero-body{grid-template-columns:1fr;padding:28px 22px;}
-    .hero-name{font-size:32px;}
+
+  .sb-link-num {
+    font-size: 9px;
+    color: rgba(255,255,255,0.20);
+    margin-left: auto;
+    letter-spacing: 1px;
   }
-  @media(max-width:500px){
-    .hero-body{grid-template-columns:1fr;}
+
+  .sb-link.active .sb-link-num { color: rgba(37,99,235,0.7); }
+
+  /* Bottom info */
+  .sb-bottom {
+    padding: 16px 22px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    background: var(--navy-dark);
   }
+
+  .sb-info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.30);
+    margin-bottom: 6px;
+    font-weight: 300;
+  }
+
+  .sb-info-row i { color: var(--gold-dark); font-size: 10px; width: 14px; text-align: center; }
+
+  .sb-socials {
+    display: flex;
+    gap: 7px;
+    margin-top: 13px;
+    padding-top: 13px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .sb-soc {
+    width: 30px; height: 30px;
+    border-radius: var(--radius-xs);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.30);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.22s;
+  }
+
+  .sb-soc:hover {
+    background: var(--blue-muted);
+    border-color: var(--blue-border);
+    color: #93b4fd;
+    transform: translateY(-2px);
+  }
+
+  .sb-copy {
+    font-size: 8px;
+    color: rgba(255,255,255,0.18);
+    text-align: center;
+    padding: 10px 22px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    letter-spacing: 1px;
+    background: var(--navy-dark);
+  }
+
+  /* ═══════════════════════════════════════════════
+     MAIN CONTENT — scrollable
+  ═══════════════════════════════════════════════ */
+  .main-content {
+    flex: 1;
+    margin-left: var(--sidebar-l);
+    margin-right: var(--sidebar-r);
+    min-height: 100vh;
+  }
+
+  /* ── Section base ── */
+  .section {
+    padding: 56px 48px;
+    background: var(--surface-white);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .section:nth-child(even) {
+    background: var(--surface-page);
+  }
+
+  /* Thin blue top line on each section */
+  .section + .section::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0; left: 48px; right: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  /* ── Section Heading ── */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 30px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .sec-head::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 52px; height: 2px;
+    background: var(--blue);
+  }
+
+  .sec-icon {
+    width: 42px; height: 42px;
+    border-radius: var(--radius-md);
+    background: var(--blue-soft);
+    border: 1px solid var(--blue-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .sec-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-heading);
+    letter-spacing: 2px;
+    display: block;
+  }
+
+  .sec-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    font-weight: 300;
+    display: block;
+  }
+
+  .sec-badge {
+    margin-left: auto;
+    font-size: 9px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid;
+    letter-spacing: 1px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .badge-blue  { color: var(--blue);  border-color: var(--blue-border);  background: var(--blue-soft); }
+  .badge-gold  { color: var(--gold-dark); border-color: var(--gold-border); background: var(--gold-soft); }
+  .badge-green { color: var(--green); border-color: rgba(22,163,74,0.30); background: var(--green-soft); }
+
+  /* ═══════════════════════════════════════════════
+     SECTION 1 — BERANDA
+     Hero: #0e1c35 background
+  ═══════════════════════════════════════════════ */
+  #beranda {
+    min-height: 100vh;
+    background: var(--navy-dark) !important;
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative radial glows */
+  #beranda::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(37,99,235,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* grid line texture */
+  #beranda::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 52px;
+    align-items: center;
+  }
+
+  /* ── Hero text ── */
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 54px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.05;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-name em { color: var(--gold); font-style: italic; }
+
+  .hero-role {
+    font-size: 13px;
+    color: rgba(255,255,255,0.50);
+    margin-bottom: 20px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-divider {
+    width: 44px; height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--gold));
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.85;
+    max-width: 500px;
+    font-weight: 300;
+    margin-bottom: 30px;
+  }
+
+  /* Buttons */
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn-blue {
+    padding: 11px 24px;
+    background: var(--blue);
+    border: 1px solid var(--blue);
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.22s;
+    letter-spacing: 0.4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .btn-blue:hover {
+    background: var(--blue-hover);
+    box-shadow: var(--shadow-blue);
+    transform: translateY(-2px);
+  }
+
+  .btn-gold-outline {
+    padding: 11px 24px;
+    background: transparent;
+    border: 1px solid var(--gold-border);
+    color: var(--gold);
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.22s;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .btn-gold-outline:hover {
+    background: var(--gold-soft);
+    border-color: var(--gold);
+    box-shadow: var(--shadow-gold);
+    transform: translateY(-2px);
+  }
+
+  .btn-white-ghost {
+    padding: 11px 24px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.70);
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.22s;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .btn-white-ghost:hover {
+    border-color: rgba(255,255,255,0.40);
+    color: #ffffff;
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* Hero info pills */
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 28px;
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    color: rgba(255,255,255,0.60);
+    font-weight: 300;
+    backdrop-filter: blur(6px);
+  }
+
+  .hero-pill i { color: var(--gold); font-size: 10px; }
+
+  /* ── Profile photo ── */
+  .hero-photo-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .photo-frame {
+    position: relative;
+    width: 230px;
+    height: 290px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(201,168,76,0.22),
+      0 0 0 4px rgba(37,99,235,0.12);
+  }
+
+  .photo-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Gold corner lines */
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: calc(var(--radius-lg) - 6px);
+    border: 1px solid rgba(201,168,76,0.18);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Blue accent bottom bar */
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--gold));
+    z-index: 3;
+  }
+
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(145deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .pp-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(37,99,235,0.15);
+    border: 2px solid rgba(37,99,235,0.30);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #93b4fd;
+  }
+
+  .pp-initials {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+  }
+
+  .pp-hint {
+    font-size: 9px;
+    color: rgba(255,255,255,0.30);
+    letter-spacing: 1.5px;
+    text-align: center;
+  }
+
+  /* Photo status card */
+  .photo-status {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: var(--radius-md);
+    padding: 13px 18px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+  }
+
+  .ps-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.50);
+    padding: 3px 0;
+    font-weight: 300;
+  }
+
+  .ps-item i { color: var(--gold); font-size: 10px; width: 14px; text-align: center; }
+
+  /* ── Stat cards on beranda ── */
+  .stat-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 14px;
+    margin-top: 44px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-md);
+    padding: 20px 16px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.25s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .stat-card:hover {
+    background: rgba(37,99,235,0.10);
+    border-color: rgba(37,99,235,0.25);
+    transform: translateY(-3px);
+  }
+
+  .stat-card:hover::after { opacity: 1; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  /* ═══════════════════════════════════════════════
+     TABLE SYSTEM
+     Header: navy-mid (#162844)
+     Body: white
+  ═══════════════════════════════════════════════ */
+  .tbl-wrap {
+    background: var(--surface-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .tbl-wrap:hover {
+    box-shadow: var(--shadow-sm);
+    border-color: #c8d4e8;
+  }
+
+  .tbl-head {
+    padding: 11px 22px;
+    background: var(--navy-mid);
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead th {
+    background: var(--surface-page);
+    padding: 10px 22px;
+    text-align: left;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.14s;
+  }
+
+  tbody tr:last-child { border: none; }
+  tbody tr:hover { background: var(--surface-hover); }
+
+  tbody td {
+    padding: 13px 22px;
+    font-size: 12px;
+    color: var(--text-body);
+    vertical-align: middle;
+    font-weight: 400;
+  }
+
+  .td-key {
+    font-size: 12px;
+    color: var(--text-muted);
+    width: 36%;
+    font-weight: 400;
+  }
+
+  .td-sep { color: var(--border); width: 14px; }
+
+  .td-blue  { color: var(--blue);  font-weight: 600; }
+  .td-navy  { color: var(--text-heading); font-weight: 600; }
+  .td-green { color: var(--green); font-weight: 500; }
+
+  /* Pills */
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 9px;
+    border: 1px solid;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .pill-blue   { color: var(--blue);     border-color: var(--blue-border);   background: var(--blue-soft); }
+  .pill-gold   { color: var(--gold-dark);border-color: var(--gold-border);   background: var(--gold-soft); }
+  .pill-green  { color: var(--green);    border-color: rgba(22,163,74,0.30); background: var(--green-soft); }
+  .pill-amber  { color: var(--amber);    border-color: rgba(217,119,6,0.30); background: var(--amber-soft); }
+  .pill-muted  { color: var(--text-muted);border-color: var(--border);       background: var(--surface-page); }
+
+  /* ═══════════════════════════════════════════════
+     INFO CARD GRID
+  ═══════════════════════════════════════════════ */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 26px;
+  }
+
+  .info-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    box-shadow: var(--shadow-xs);
+    transition: all 0.22s;
+  }
+
+  .info-card:hover {
+    border-color: var(--border-active);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+  }
+
+  .ic-icon {
+    width: 38px; height: 38px;
+    border-radius: var(--radius-sm);
+    background: var(--blue-soft);
+    border: 1px solid var(--blue-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue);
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .ic-label {
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+
+  .ic-val {
+    font-size: 12px;
+    color: var(--text-heading);
+    font-weight: 500;
+  }
+
+  /* ═══════════════════════════════════════════════
+     TIMELINE
+  ═══════════════════════════════════════════════ */
+  .timeline { position: relative; padding-left: 28px; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--blue) 0%, var(--gold) 50%, var(--border) 100%);
+  }
+
+  .tl-item { position: relative; padding: 0 0 28px 26px; }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 2px solid var(--surface-white);
+    box-shadow: 0 0 0 2px var(--blue-border), 0 0 10px rgba(37,99,235,0.25);
+  }
+
+  .tl-period { font-size: 10px; color: var(--blue); font-weight: 600; letter-spacing: 1px; margin-bottom: 4px; }
+  .tl-level  { font-size: 9px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .tl-school { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--text-heading); margin-bottom: 3px; }
+  .tl-detail { font-size: 12px; color: var(--text-sub, var(--text-muted)); font-weight: 300; }
+
+  .tl-badge {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 3px 10px;
+    border-radius: var(--radius-xs);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  /* ═══════════════════════════════════════════════
+     SKILL TABLE
+  ═══════════════════════════════════════════════ */
+  .skill-track {
+    width: 140px;
+    height: 5px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--navy-light), var(--blue));
+    width: 0;
+    transition: width 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .skill-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--blue);
+    width: 46px;
+    text-align: right;
+  }
+
+  /* Tech chips */
+  .chip-grid { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 22px; }
+
+  .tech-chip {
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    background: var(--surface-white);
+    border: 1px solid var(--border);
+    color: var(--text-body);
+    font-weight: 400;
+    transition: all 0.2s;
+    cursor: default;
+    box-shadow: var(--shadow-xs);
+  }
+
+  .tech-chip:hover {
+    background: var(--blue-soft);
+    border-color: var(--blue-border);
+    color: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ═══════════════════════════════════════════════
+     PORTFOLIO TABLE
+  ═══════════════════════════════════════════════ */
+  .pt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: var(--radius-xs);
+    font-size: 9px;
+    border: 1px solid;
+    font-weight: 500;
+  }
+
+  .pt-badge.web  { color: var(--blue);     border-color: var(--blue-border);   background: var(--blue-soft); }
+  .pt-badge.sys  { color: var(--green);    border-color: rgba(22,163,74,0.30); background: var(--green-soft); }
+  .pt-badge.game { color: var(--gold-dark);border-color: var(--gold-border);   background: var(--gold-soft); }
+
+  .code-chip {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: var(--radius-xs);
+    font-size: 9px;
+    background: var(--surface-page);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    margin: 1px;
+    font-weight: 400;
+  }
+
+  .status-done { color: var(--green); font-size: 11px; font-weight: 500; }
+  .status-wip  { color: var(--amber); font-size: 11px; font-weight: 500; }
+
+  .view-btn {
+    padding: 5px 14px;
+    background: var(--blue-soft);
+    border: 1px solid var(--blue-border);
+    color: var(--blue);
+    border-radius: var(--radius-xs);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .view-btn:hover {
+    background: var(--blue);
+    color: #ffffff;
+    box-shadow: var(--shadow-blue);
+  }
+
+  /* ═══════════════════════════════════════════════
+     CONTACT SECTION
+  ═══════════════════════════════════════════════ */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .ccard {
+    background: var(--surface-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-xs);
+  }
+
+  .ccard-head {
+    padding: 11px 20px;
+    background: var(--navy-mid);
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+
+  .ccard-body { padding: 18px; }
+
+  .field-wrap { margin-bottom: 14px; }
+
+  .field-lbl {
+    display: block;
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+  }
+
+  .field-inp {
+    width: 100%;
+    background: var(--surface-page);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--text-heading);
+    outline: none;
+    transition: all 0.2s;
+    font-weight: 400;
+  }
+
+  .field-inp::placeholder { color: var(--text-muted); }
+
+  .field-inp:focus {
+    border-color: var(--blue);
+    background: var(--surface-white);
+    box-shadow: 0 0 0 3px var(--blue-soft);
+  }
+
+  textarea.field-inp { resize: vertical; min-height: 88px; }
+
+  .send-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--blue);
+    border: 1px solid var(--blue);
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 0.4px;
+  }
+
+  .send-btn:hover {
+    background: var(--blue-hover);
+    box-shadow: var(--shadow-blue);
+    transform: translateY(-1px);
+  }
+
+  .map-wrap {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    height: 176px;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+
+  .map-wrap iframe { width: 100%; height: 100%; display: block; filter: saturate(0.6); }
+
+  .map-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  /* ═══════════════════════════════════════════════
+     RIGHT SIDEBAR
+     Background: surface-page + white cards
+  ═══════════════════════════════════════════════ */
+  .sidebar-right {
+    width: var(--sidebar-r);
+    flex-shrink: 0;
+    position: fixed;
+    top: 0; right: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--surface-page);
+    border-left: 1px solid var(--border);
+    padding: 0 14px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+  }
+
+  /* Blue accent top */
+  .sidebar-right::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--gold), var(--blue));
+    margin: 0 -14px 20px;
+    flex-shrink: 0;
+  }
+
+  .rw {
+    background: var(--surface-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-xs);
+  }
+
+  .rw-head {
+    padding: 9px 14px;
+    background: var(--navy-mid);
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+  }
+
+  .rw-body { padding: 16px; }
+
+  .clock-num {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--navy-dark);
+    text-align: center;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+
+  .clock-txt {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  .rw-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rw-stat:last-child { border: none; }
+  .rw-stat-label { color: var(--text-muted); font-weight: 300; }
+  .rw-stat-val   { color: var(--blue); font-weight: 600; font-size: 11px; }
+
+  .rw-skill { margin-bottom: 10px; }
+  .rw-skill:last-child { margin: 0; }
+
+  .rw-skill-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    margin-bottom: 5px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .rw-skill-pct { color: var(--blue); font-weight: 600; }
+
+  .rw-skill-track {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .rw-skill-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--navy-light), var(--blue));
+    width: 0;
+    transition: width 1.6s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .rw-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-body);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .rw-quote-attr {
+    font-size: 9px;
+    color: var(--gold-dark);
+    text-align: center;
+    margin-top: 8px;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+
+  .rw-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 10px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+
+  .rw-link:last-child { border: none; }
+
+  .rw-link:hover { color: var(--blue); }
+  .rw-link i { color: var(--blue); width: 14px; text-align: center; font-size: 11px; }
+
+  /* ═══════════════════════════════════════════════
+     SECTION HEADINGS — white pages
+  ═══════════════════════════════════════════════ */
+  .sub-head {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-heading);
+    letter-spacing: 2px;
+    margin: 30px 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .sub-head i { color: var(--blue); font-size: 13px; }
+
+  /* ═══════════════════════════════════════════════
+     UTILITIES
+  ═══════════════════════════════════════════════ */
+  .scroll-top {
+    position: fixed;
+    bottom: 26px;
+    right: calc(var(--sidebar-r) + 18px);
+    width: 38px; height: 38px;
+    background: var(--blue);
+    border: none;
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 13px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    z-index: 50;
+    box-shadow: var(--shadow-blue);
+  }
+
+  .scroll-top.show { opacity: 1; pointer-events: all; }
+  .scroll-top:hover { background: var(--blue-hover); transform: translateY(-2px); }
+
+  .mob-btn {
+    display: none;
+    position: fixed;
+    top: 12px; left: 12px;
+    z-index: 200;
+    background: var(--navy-dark);
+    border: 1px solid var(--navy-light);
+    color: var(--gold);
+    width: 40px; height: 40px;
+    border-radius: var(--radius-sm);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(14,28,53,0.65);
+    z-index: 90;
+    backdrop-filter: blur(2px);
+  }
+
+  .overlay.show { display: block; }
+
+  /* ═══════════════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════════════ */
+  @media (max-width: 1300px) {
+    .sidebar-right { display: none; }
+    .main-content  { margin-right: 0; }
+    .scroll-top    { right: 20px; }
+  }
+
+  @media (max-width: 1024px) {
+    .section { padding: 44px 36px; }
+    .hero-inner { grid-template-columns: 1fr 250px; gap: 36px; }
+    .hero-name  { font-size: 44px; }
+    .photo-frame { width: 200px; height: 256px; }
+  }
+
+  @media (max-width: 860px) {
+    .stat-grid    { grid-template-columns: repeat(2,1fr); }
+    .hero-inner   { grid-template-columns: 1fr; }
+    .hero-photo-side { flex-direction: row; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-left {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    .sidebar-left.open { transform: translateX(0); }
+    .main-content { margin-left: 0; }
+    .mob-btn      { display: flex; }
+    .section      { padding: 40px 20px; }
+    .hero-name    { font-size: 34px; }
+  }
+
+  @media (max-width: 520px) {
+    .info-grid  { grid-template-columns: 1fr; }
+    .hero-btns  { flex-direction: column; }
+    .hero-name  { font-size: 28px; }
+    .photo-frame { width: 160px; height: 210px; }
+  }
+
   </style>
 </head>
 <body>
 
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
+<button class="scroll-top" id="scrollTopBtn"><i class="fas fa-chevron-up"></i></button>
+<button class="mob-btn" id="mobBtn"><i class="fas fa-bars"></i></button>
+<div class="overlay" id="overlay"></div>
 
-<button class="scroll-top-btn" id="scrollTopBtn"><i class="fas fa-chevron-up"></i></button>
-<button class="mob-menu" id="mobMenu"><i class="fas fa-bars"></i></button>
+<div class="layout">
 
-<div class="page-layout">
-
-  <!-- ══ LEFT SIDEBAR ══ -->
+  <!-- ════════════ LEFT SIDEBAR ════════════ -->
   <aside class="sidebar-left" id="sidebarLeft">
-    <div class="sb-top">
-      <div class="sb-monogram">Khair Arrayyan</div>
-      <div class="sb-monogram-sub">PORTFOLIO · 2025</div>
+
+    <div class="sb-brand">
+      <div class="sb-brand-name">Khair Arrayyan</div>
+      <div class="sb-brand-sub">PORTFOLIO · 2025</div>
     </div>
-    <div class="sb-avatar-wrap">
-      <div class="sb-avatar-frame">
-        <div class="sb-avatar-inner">
-          <img src="assets/images/profile.jpg" alt="MK" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-family:Cinzel,serif;font-size:22px;color:var(--gold-dark);font-weight:700\'>MK</span>'">
+
+    <div class="sb-profile">
+      <div class="sb-avatar-ring">
+        <div class="sb-avatar-img">
+          <img
+            src="assets/images/profile.jpg"
+            alt="M. Khair Arrayyan"
+          >
         </div>
         <span class="sb-status-dot"></span>
       </div>
       <div class="sb-fullname">M. Khair Arrayyan</div>
-      <div class="sb-role-tag">Mahasiswa · UIB Batam</div>
+      <span class="sb-role-badge">Mahasiswa · UIB Batam</span>
     </div>
+
     <nav class="sb-nav">
       <span class="sb-nav-label">Navigasi</span>
       <ul style="list-style:none">
-        <li><button class="sb-nav-item active" data-target="beranda"><span class="sb-nav-icon"><i class="fas fa-home"></i></span>Beranda<span class="sb-nav-num">01</span><span class="sb-nav-indicator"></span></button></li>
-        <li><button class="sb-nav-item" data-target="biodata"><span class="sb-nav-icon"><i class="fas fa-id-card"></i></span>Biodata<span class="sb-nav-num">02</span><span class="sb-nav-indicator"></span></button></li>
-        <li><button class="sb-nav-item" data-target="pendidikan"><span class="sb-nav-icon"><i class="fas fa-graduation-cap"></i></span>Pendidikan<span class="sb-nav-num">03</span><span class="sb-nav-indicator"></span></button></li>
-        <li><button class="sb-nav-item" data-target="keahlian"><span class="sb-nav-icon"><i class="fas fa-star"></i></span>Keahlian<span class="sb-nav-num">04</span><span class="sb-nav-indicator"></span></button></li>
-        <li><button class="sb-nav-item" data-target="portfolio"><span class="sb-nav-icon"><i class="fas fa-briefcase"></i></span>Portfolio<span class="sb-nav-num">05</span><span class="sb-nav-indicator"></span></button></li>
-        <li><button class="sb-nav-item" data-target="kontak"><span class="sb-nav-icon"><i class="fas fa-envelope"></i></span>Kontak<span class="sb-nav-num">06</span><span class="sb-nav-indicator"></span></button></li>
+        <li><a class="sb-link active" href="#beranda"   data-section="beranda"   ><span class="sb-link-icon"><i class="fas fa-home"></i></span>Beranda<span class="sb-link-num">01</span></a></li>
+        <li><a class="sb-link"        href="#biodata"   data-section="biodata"   ><span class="sb-link-icon"><i class="fas fa-id-card"></i></span>Biodata<span class="sb-link-num">02</span></a></li>
+        <li><a class="sb-link"        href="#pendidikan"data-section="pendidikan"><span class="sb-link-icon"><i class="fas fa-graduation-cap"></i></span>Pendidikan<span class="sb-link-num">03</span></a></li>
+        <li><a class="sb-link"        href="#keahlian"  data-section="keahlian"  ><span class="sb-link-icon"><i class="fas fa-star"></i></span>Keahlian<span class="sb-link-num">04</span></a></li>
+        <li><a class="sb-link"        href="#portfolio" data-section="portfolio" ><span class="sb-link-icon"><i class="fas fa-briefcase"></i></span>Portfolio<span class="sb-link-num">05</span></a></li>
+        <li><a class="sb-link"        href="#kontak"    data-section="kontak"    ><span class="sb-link-icon"><i class="fas fa-envelope"></i></span>Kontak<span class="sb-link-num">06</span></a></li>
       </ul>
     </nav>
+
     <div class="sb-bottom">
       <div class="sb-info-row"><i class="fas fa-map-marker-alt"></i> Batam, Indonesia</div>
-      <div class="sb-info-row"><i class="fas fa-university"></i> UIB · sistem informasi</div>
-      <div class="sb-info-row"><i class="fas fa-layer-group"></i> Semester 2 · Angkatan 2025</div>
-      <div class="sb-social-row">
-        <a class="sb-social-btn" href="https://github.com/KhairArrayyannmhs01" target="_blank"><i class="fab fa-github"></i></a>
-        <a class="sb-social-btn" href="https://www.linkedin.com/in/m-khair-ar-rayyan-1b9251386/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a class="sb-social-btn" href="https://www.instagram.com/khair.arryynn/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <div class="sb-info-row"><i class="fas fa-university"></i> UIB · Sistem Informasi</div>
+      <div class="sb-info-row"><i class="fas fa-layer-group"></i> Semester 2 · 2025</div>
+      <div class="sb-socials">
+        <a class="sb-soc" href="https://github.com/KhairArrayyannmhs01"                      target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a class="sb-soc" href="https://www.linkedin.com/in/m-khair-ar-rayyan-1b9251386/"    target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a class="sb-soc" href="https://www.instagram.com/khair.arryynn/"                    target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
+
     <div class="sb-copy">© 2025 M. Khair Arrayyan</div>
+
   </aside>
 
-  <!-- ══ MAIN CONTENT ══ -->
-  <div class="main-content">
-    <div class="content-area">
+  <!-- ════════════ MAIN CONTENT ════════════ -->
+  <main class="main-content">
 
-      <!-- ══ BERANDA ══ -->
-      <section class="section-block" id="section-beranda" data-section="beranda">
-        <div class="section-scroll-label">
-          <span class="section-scroll-num">01</span>
-          Beranda
-        </div>
-        <div class="hero-card">
-          <div class="hero-body">
-            <div>
-              <div class="hero-label">Portofolio Pribadi</div>
-              <h1 class="hero-name">M. Khair<br><span>Arrayyan</span></h1>
-              <p class="hero-subtitle">Mahasiswa sistem informasi &nbsp;·&nbsp; Universitas Internasional Batam</p>
-              <div class="hero-divider"></div>
-              <p class="hero-desc">Mahasiswa aktif Semester 2 dengan minat mendalam di bidang pemrograman dan sistem informasi. Percaya bahwa teknologi yang dibangun dengan penuh dedikasi dapat memberi dampak nyata bagi masyarakat.</p>
-              <div class="hero-btns">
-                <button class="btn-gold" onclick="scrollToSection('biodata')"><i class="fas fa-id-card" style="margin-right:7px"></i>Lihat Biodata</button>
-                <button class="btn-gold" onclick="scrollToSection('portfolio')"><i class="fas fa-briefcase" style="margin-right:7px"></i>Portfolio</button>
-                <button class="btn-outline" onclick="scrollToSection('kontak')"><i class="fas fa-envelope" style="margin-right:7px"></i>Hubungi Saya</button>
-              </div>
-            </div>
-            <div class="hero-meta-block">
-              <div class="hero-meta-item"><span class="hero-meta-icon"><i class="fas fa-map-marker-alt"></i></span><span class="hero-meta-text">Batam, Indonesia</span></div>
-              <div class="hero-meta-item"><span class="hero-meta-icon"><i class="fas fa-phone"></i></span><span class="hero-meta-text">+62 878 6381 3426</span></div>
-              <div class="hero-meta-item"><span class="hero-meta-icon"><i class="fas fa-envelope"></i></span><span class="hero-meta-text" style="font-size:10px">khair@email.com</span></div>
-              <div class="hero-meta-item"><span class="hero-meta-icon"><i class="fas fa-calendar"></i></span><span class="hero-meta-text">04 Oktober 2007</span></div>
-              <div class="hero-meta-item"><span class="hero-meta-icon"><i class="fab fa-github"></i></span><span class="hero-meta-text" style="font-size:10px">KhairArrayyannmhs01</span></div>
-            </div>
-            <!-- Foto Profil Kedua di Beranda -->
-            <div class="hero-profile-photo">
-              <div class="hero-photo-frame">
-                <img src="assets/images/profile-big.jpg" alt="Foto Profil"
-                  onerror="this.style.display='none';this.parentElement.innerHTML='<div class=hero-photo-frame-placeholder><i class=\'fas fa-user\'></i></div>'">
-              </div>
-              <div class="hero-photo-label">Foto Profil</div>
-              <div class="hero-photo-badge">● Online</div>
-            </div>
-          </div>
-        </div>
-        <div class="stat-row-grid">
-          <div class="stat-c"><span class="stat-c-num" data-count="6">0</span><span class="stat-c-label">Proyek Selesai</span></div>
-          <div class="stat-c"><span class="stat-c-num" data-count="11">0</span><span class="stat-c-label">Keahlian</span></div>
-          <div class="stat-c"><span class="stat-c-num" data-count="2">0</span><span class="stat-c-label">Semester Aktif</span></div>
-          <div class="stat-c"><span class="stat-c-num" data-count="1">0</span><span class="stat-c-label">Pengalaman Magang</span></div>
-        </div>
-        <div class="info-strip">
-          <div class="info-strip-item"><div class="isi-icon"><i class="fas fa-university"></i></div><div><div class="isi-label">Perguruan Tinggi</div><div class="isi-val" style="color:#1a2540">UIB · sistem informasi</div></div></div>
-          <div class="info-strip-item"><div class="isi-icon"><i class="fas fa-flag"></i></div><div><div class="isi-label">Kewarganegaraan</div><div class="isi-val" style="color:#1a2540">Indonesia 🇮🇩</div></div></div>
-          <div class="info-strip-item"><div class="isi-icon"><i class="fas fa-language"></i></div><div><div class="isi-label">Bahasa</div><div class="isi-val" style="color:#1a2540">Indonesia · Inggris</div></div></div>
-          <div class="info-strip-item"><div class="isi-icon"><i class="fas fa-star"></i></div><div><div class="isi-label">Status</div><div class="isi-val" style="color:var(--green)">Aktif · Mahasiswa</div></div></div>
-        </div>
-      </section>
+    <!-- ── 1. BERANDA ── -->
+    <section class="section" id="beranda">
 
-      <!-- ══ BIODATA ══ -->
-      <section class="section-block" id="section-biodata" data-section="biodata">
-        <div class="section-scroll-label">
-          <span class="section-scroll-num">02</span>
-          Biodata
-        </div>
-        <div class="sec-head">
-          <div class="sec-head-icon"><i class="fas fa-id-card"></i></div>
-          <div class="sec-head-text"><h2>DATA PRIBADI</h2><p>Informasi biodata lengkap M. Khair Arrayyan</p></div>
-          <span class="sec-badge badge-green"><i class="fas fa-check" style="margin-right:5px"></i>Terverifikasi</span>
-        </div>
-        <div class="tbl-wrap">
-          <div class="tbl-label"><i class="fas fa-user"></i> Data Pribadi</div>
-          <table>
-            <thead><tr><th>Keterangan</th><th></th><th>Informasi</th></tr></thead>
-            <tbody>
-              <tr><td class="td-key">Nama Lengkap</td><td class="td-sep">:</td><td class="td-gold">M. Khair Arrayyan</td></tr>
-              <tr><td class="td-key">Tanggal Lahir</td><td class="td-sep">:</td><td>04 Oktober 2007</td></tr>
-              <tr><td class="td-key">Tempat Lahir</td><td class="td-sep">:</td><td>Batam, Kepulauan Riau</td></tr>
-              <tr><td class="td-key">Kewarganegaraan</td><td class="td-sep">:</td><td>Indonesia 🇮🇩</td></tr>
-              <tr><td class="td-key">Jenis Kelamin</td><td class="td-sep">:</td><td>Laki-laki</td></tr>
-              <tr><td class="td-key">Agama</td><td class="td-sep">:</td><td>Islam</td></tr>
-              <tr><td class="td-key">Bahasa</td><td class="td-sep">:</td><td><span class="pill pill-gold">Indonesia</span>&nbsp;<span class="pill pill-navy">Inggris</span></td></tr>
-              <tr><td class="td-key">Status</td><td class="td-sep">:</td><td><span class="pill pill-green">Aktif · Mahasiswa</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="tbl-wrap">
-          <div class="tbl-label"><i class="fas fa-address-book"></i> Informasi Kontak</div>
-          <table>
-            <thead><tr><th>Platform</th><th></th><th>Detail</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td class="td-key"><i class="fas fa-envelope" style="color:var(--amber);margin-right:8px"></i>Email</td><td class="td-sep">:</td><td>khair@email.com</td><td><span class="pill pill-green">Aktif</span></td></tr>
-              <tr><td class="td-key"><i class="fas fa-phone" style="color:var(--green);margin-right:8px"></i>Telepon</td><td class="td-sep">:</td><td>+62 878 6381 3426</td><td><span class="pill pill-green">Aktif</span></td></tr>
-              <tr><td class="td-key"><i class="fab fa-github" style="color:var(--text-mid);margin-right:8px"></i>GitHub</td><td class="td-sep">:</td><td><a href="https://github.com/KhairArrayyannmhs01" target="_blank" style="color:var(--gold-dark);text-decoration:none">KhairArrayyannmhs01</a></td><td><span class="pill pill-navy">Publik</span></td></tr>
-              <tr><td class="td-key"><i class="fab fa-linkedin" style="color:#0077b5;margin-right:8px"></i>LinkedIn</td><td class="td-sep">:</td><td><a href="https://www.linkedin.com/in/m-khair-ar-rayyan-1b9251386/" target="_blank" style="color:var(--gold-dark);text-decoration:none">m-khair-ar-rayyan</a></td><td><span class="pill pill-navy">Publik</span></td></tr>
-              <tr><td class="td-key"><i class="fab fa-instagram" style="color:#e1306c;margin-right:8px"></i>Instagram</td><td class="td-sep">:</td><td><a href="https://www.instagram.com/khair.arryynn/" target="_blank" style="color:var(--gold-dark);text-decoration:none">@khair.arryynn</a></td><td><span class="pill pill-navy">Sosial</span></td></tr>
-              <tr><td class="td-key"><i class="fas fa-map-marker-alt" style="color:var(--gold-dark);margin-right:8px"></i>Lokasi</td><td class="td-sep">:</td><td>Batam, Kepulauan Riau, Indonesia</td><td><span class="pill pill-gold">Domisili</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="tbl-wrap">
-          <div class="tbl-label"><i class="fas fa-university"></i> Informasi Akademik</div>
-          <table>
-            <thead><tr><th>Keterangan</th><th></th><th>Informasi</th></tr></thead>
-            <tbody>
-              <tr><td class="td-key">Perguruan Tinggi</td><td class="td-sep">:</td><td class="td-gold">Universitas Internasional Batam</td></tr>
-              <tr><td class="td-key">Program Studi</td><td class="td-sep">:</td><td>sistem informasi</td></tr>
-              <tr><td class="td-key">Jenjang</td><td class="td-sep">:</td><td><span class="pill pill-gold">S1 / Strata 1</span></td></tr>
-              <tr><td class="td-key">Semester</td><td class="td-sep">:</td><td class="td-green">Semester 2 · Aktif</td></tr>
-              <tr><td class="td-key">Angkatan</td><td class="td-sep">:</td><td>2025</td></tr>
-              <tr><td class="td-key">Website Kampus</td><td class="td-sep">:</td><td><a href="https://www.uib.ac.id" target="_blank" style="color:var(--gold-dark);text-decoration:none">www.uib.ac.id</a></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <div class="hero-inner">
 
-      <!-- ══ PENDIDIKAN ══ -->
-      <section class="section-block" id="section-pendidikan" data-section="pendidikan">
-        <div class="section-scroll-label">
-          <span class="section-scroll-num">03</span>
-          Pendidikan
-        </div>
-        <div class="sec-head">
-          <div class="sec-head-icon"><i class="fas fa-graduation-cap"></i></div>
-          <div class="sec-head-text"><h2>LATAR BELAKANG PENDIDIKAN</h2><p>Riwayat pendidikan formal dan pengalaman</p></div>
-          <span class="sec-badge badge-gold">5 Entries</span>
-        </div>
-        <div class="tbl-wrap">
-          <div class="tbl-label"><i class="fas fa-table"></i> Riwayat Pendidikan Formal</div>
-          <table>
-            <thead><tr><th>Periode</th><th>Jenjang</th><th>Institusi</th><th>Jurusan / Keterangan</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr>
-                <td style="color:var(--gold);font-weight:500;font-size:11px;white-space:nowrap">2025 – kini</td>
-                <td><span class="pill pill-gold">S1</span></td>
-                <td style="font-weight:500;color:var(--text-white)">Universitas Internasional Batam</td>
-                <td style="color:var(--text-mid);font-size:11px">sistem informasi</td>
-                <td><span class="pill pill-green">Aktif</span></td>
-              </tr>
-              <tr>
-                <td style="color:var(--gold);font-weight:500;font-size:11px;white-space:nowrap">2024 – 2025</td>
-                <td><span class="pill pill-amber">Magang</span></td>
-                <td style="font-weight:500;color:var(--text-white)">PT PGN Solution Batam</td>
-                <td style="color:var(--text-mid);font-size:11px">Praktik Kerja Lapangan (PKL)</td>
-                <td><span class="pill pill-navy">Selesai</span></td>
-              </tr>
-              <tr>
-                <td style="color:var(--gold);font-weight:500;font-size:11px;white-space:nowrap">2022 – 2025</td>
-                <td><span class="pill pill-navy">SMK</span></td>
-                <td style="font-weight:500;color:var(--text-white)">SMK Multistudi Highschool Batam</td>
-                <td style="color:var(--text-mid);font-size:11px">Rekayasa Perangkat Lunak (RPL)</td>
-                <td><span class="pill pill-navy">Lulus</span></td>
-              </tr>
-              <tr>
-                <td style="color:var(--gold);font-weight:500;font-size:11px;white-space:nowrap">2019 – 2022</td>
-                <td><span class="pill pill-navy">SMP</span></td>
-                <td style="font-weight:500;color:var(--text-white)">SMPN 29 Batam</td>
-                <td style="color:var(--text-mid);font-size:11px">—</td>
-                <td><span class="pill pill-navy">Lulus</span></td>
-              </tr>
-              <tr>
-                <td style="color:var(--gold);font-weight:500;font-size:11px;white-space:nowrap">2013 – 2019</td>
-                <td><span class="pill pill-navy">SD</span></td>
-                <td style="font-weight:500;color:var(--text-white)">SDN 001 Batu Ampar</td>
-                <td style="color:var(--text-mid);font-size:11px">—</td>
-                <td><span class="pill pill-navy">Lulus</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="sec-head" style="margin-top:10px">
-          <div class="sec-head-icon"><i class="fas fa-stream"></i></div>
-          <div class="sec-head-text"><h2>TIMELINE PERJALANAN</h2><p>Jejak pendidikan dari awal hingga kini</p></div>
-        </div>
-        <div class="timeline-wrap">
-          <div class="tl-item">
-            <div class="tl-period">2025 — Sekarang</div>
-            <div class="tl-level">Perguruan Tinggi</div>
-            <div class="tl-school">Universitas Internasional Batam</div>
-            <div class="tl-detail">S1 sistem informasi &nbsp;·&nbsp; Batam, Kepulauan Riau</div>
-            <span class="tl-badge" style="background:var(--green-pale);color:var(--green);border:1px solid rgba(76,175,138,0.3)">Aktif</span>
+        <!-- Left: Text -->
+        <div>
+          <div class="hero-eyebrow">Portofolio Pribadi</div>
+          <h1 class="hero-name">M. Khair<br><em>Arrayyan</em></h1>
+          <p class="hero-role">Mahasiswa Sistem Informasi &nbsp;·&nbsp; Universitas Internasional Batam</p>
+          <div class="hero-divider"></div>
+          <p class="hero-desc">Mahasiswa aktif Semester 2 dengan minat mendalam di bidang pemrograman, desain, dan sistem informasi. Percaya bahwa teknologi yang dibangun dengan dedikasi dapat memberi dampak nyata bagi masyarakat.</p>
+          <div class="hero-btns">
+            <a class="btn-blue"         href="#biodata"  ><i class="fas fa-id-card"></i> Lihat Biodata</a>
+            <a class="btn-gold-outline" href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
+            <a class="btn-white-ghost"  href="#kontak"   ><i class="fas fa-envelope"></i> Hubungi Saya</a>
           </div>
-          <div class="tl-item">
-            <div class="tl-period">2024 — 2025</div>
-            <div class="tl-level">Magang / PKL</div>
-            <div class="tl-school">PT PGN Solution Batam</div>
-            <div class="tl-detail">Praktik Kerja Lapangan &nbsp;·&nbsp; Pengembangan Web</div>
-            <span class="tl-badge" style="background:var(--gold-muted);color:var(--gold);border:1px solid rgba(201,168,76,0.3)">Selesai</span>
-          </div>
-          <div class="tl-item">
-            <div class="tl-period">2022 — 2025</div>
-            <div class="tl-level">Sekolah Menengah Kejuruan</div>
-            <div class="tl-school">SMK Multistudi Highschool Batam</div>
-            <div class="tl-detail">Jurusan Rekayasa Perangkat Lunak (RPL)</div>
-            <span class="tl-badge" style="background:rgba(255,255,255,0.04);color:var(--text-mid);border:1px solid var(--navy-border)">Lulus</span>
-          </div>
-          <div class="tl-item">
-            <div class="tl-period">2019 — 2022</div>
-            <div class="tl-level">Sekolah Menengah Pertama</div>
-            <div class="tl-school">SMPN 29 Batam</div>
-            <div class="tl-detail">Batam, Kepulauan Riau</div>
-            <span class="tl-badge" style="background:rgba(255,255,255,0.04);color:var(--text-mid);border:1px solid var(--navy-border)">Lulus</span>
-          </div>
-          <div class="tl-item" style="padding-bottom:0">
-            <div class="tl-period">2013 — 2019</div>
-            <div class="tl-level">Sekolah Dasar</div>
-            <div class="tl-school">SDN 001 Batu Ampar</div>
-            <div class="tl-detail">Batam, Kepulauan Riau</div>
-            <span class="tl-badge" style="background:rgba(255,255,255,0.04);color:var(--text-mid);border:1px solid var(--navy-border)">Lulus</span>
-          </div>
-        </div>
-      </section>
 
-      <!-- ══ KEAHLIAN ══ -->
-      <section class="section-block" id="section-keahlian" data-section="keahlian">
-        <div class="section-scroll-label">
-          <span class="section-scroll-num">04</span>
-          Keahlian
-        </div>
-        <div class="sec-head">
-          <div class="sec-head-icon"><i class="fas fa-star"></i></div>
-          <div class="sec-head-text"><h2>KEAHLIAN & TEKNOLOGI</h2><p>Tingkat kemahiran dan tech stack yang dikuasai</p></div>
-          <span class="sec-badge badge-gold">11 Skills</span>
-        </div>
-        <div class="tbl-wrap">
-          <div class="tbl-label"><i class="fas fa-chart-bar"></i> Tabel Tingkat Keahlian</div>
-          <table>
-            <thead><tr><th>#</th><th>Keahlian</th><th>Kategori</th><th>Tingkat Kemahiran</th><th>Level</th><th style="text-align:right">%</th></tr></thead>
-            <tbody>
-              <tr><td style="color:#5a6e8c;font-size:10px">01</td><td><i class="fab fa-html5" style="color:#e34f26;margin-right:8px"></i>HTML / CSS</td><td><span class="pill pill-navy">Frontend</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></td><td><span class="pill pill-green">Advanced</span></td><td class="skill-pct">85%</td></tr>
-              <tr><td style="color:#5a6e8c;font-size:10px">02</td><td><i class="fab fa-js-square" style="color:#f7df1e;margin-right:8px"></i>JavaScript</td><td><span class="pill pill-navy">Frontend</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div></td><td><span class="pill pill-gold">Intermediate</span></td><td class="skill-pct">70%</td></tr>
-              <tr><td style="color:#5a6e8c;font-size:10px">03</td><td><i class="fab fa-php" style="color:#8892bf;margin-right:8px"></i>PHP</td><td><span class="pill pill-navy">Backend</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="68"></div></div></td><td><span class="pill pill-gold">Intermediate</span></td><td class="skill-pct">68%</td></tr>
-              <tr><td style="color:#5a6e8c;font-size:10px">04</td><td><i class="fab fa-python" style="color:#306998;margin-right:8px"></i>Python</td><td><span class="pill pill-navy">Backend</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="60"></div></div></td><td><span class="pill pill-amber">Beginner+</span></td><td class="skill-pct">60%</td></tr>
-              <tr><td style="color:#5a6e8c;font-size:10px">05</td><td><i class="fas fa-database" style="color:var(--gold-dark);margin-right:8px"></i>Database / MySQL</td><td><span class="pill pill-navy">Database</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="72"></div></div></td><td><span class="pill pill-gold">Intermediate</span></td><td class="skill-pct">72%</td></tr>
-              <tr><td style="color:#5a6e8c;font-size:10px">06</td><td><i class="fas fa-paint-brush" style="color:#ff6b35;margin-right:8px"></i>Adobe Illustrator & PS</td><td><span class="pill pill-navy">Design</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div></td><td><span class="pill pill-gold">Intermediate</span></td><td class="skill-pct">75%</td></tr>
-              <tr><td style="color:#5a6e8c;font-size:10px">07</td><td><i class="fas fa-film" style="color:#a855f7;margin-right:8px"></i>Adobe Premiere Pro</td><td><span class="pill pill-navy">Video</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div></td><td><span class="pill pill-gold">Intermediate</span></td><td class="skill-pct">70%</td></tr>
-              <tr><td style="color:#5a6e8c;font-size:10px">08</td><td><i class="fas fa-pencil-ruler" style="color:var(--green);margin-right:8px"></i>UI/UX Prototyping</td><td><span class="pill pill-navy">Design</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div></td><td><span class="pill pill-gold">Intermediate</span></td><td class="skill-pct">65%</td></tr>
-              <tr><td style="color:#5a6e8c;font-size:10px">09</td><td><i class="fab fa-git-alt" style="color:#f05032;margin-right:8px"></i>Git & GitHub</td><td><span class="pill pill-navy">DevTools</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="68"></div></div></td><td><span class="pill pill-gold">Intermediate</span></td><td class="skill-pct">68%</td></tr>
-              <tr><td style="color:#5a6e8c;font-size:10px">10</td><td><i class="fas fa-project-diagram" style="color:var(--gold-dark);margin-right:8px"></i>Flowchart / ERD / UML</td><td><span class="pill pill-navy">Analysis</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="74"></div></div></td><td><span class="pill pill-gold">Intermediate</span></td><td class="skill-pct">74%</td></tr>
-              <tr><td style="color:#5a6e8c;font-size:10px">11</td><td><i class="fas fa-gamepad" style="color:#a855f7;margin-right:8px"></i>Unity / Game Dev</td><td><span class="pill pill-navy">Game</span></td><td><div class="skill-bar-track"><div class="skill-bar-fill" data-width="40"></div></div></td><td><span class="pill pill-amber">Beginner</span></td><td class="skill-pct">40%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="tbl-wrap">
-          <div class="tbl-label"><i class="fas fa-layer-group"></i> Tech Stack</div>
-          <div class="chip-grid">
-            <span class="tech-chip"><i class="fab fa-html5" style="color:#e34f26;margin-right:5px"></i>HTML5</span>
-            <span class="tech-chip"><i class="fab fa-css3-alt" style="color:#264de4;margin-right:5px"></i>CSS3</span>
-            <span class="tech-chip"><i class="fab fa-js" style="color:#f7df1e;margin-right:5px"></i>JavaScript</span>
-            <span class="tech-chip"><i class="fab fa-php" style="color:#8892bf;margin-right:5px"></i>PHP</span>
-            <span class="tech-chip"><i class="fab fa-python" style="color:#3776ab;margin-right:5px"></i>Python</span>
-            <span class="tech-chip"><i class="fas fa-database" style="color:var(--gold-dark);margin-right:5px"></i>MySQL</span>
-            <span class="tech-chip"><i class="fab fa-git-alt" style="color:#f05032;margin-right:5px"></i>Git</span>
-            <span class="tech-chip"><i class="fab fa-github" style="margin-right:5px"></i>GitHub</span>
-            <span class="tech-chip"><i class="fas fa-server" style="color:#ff6900;margin-right:5px"></i>XAMPP</span>
-            <span class="tech-chip"><i class="fas fa-gamepad" style="color:#a855f7;margin-right:5px"></i>Unity</span>
-            <span class="tech-chip"><i class="fas fa-film" style="color:#a855f7;margin-right:5px"></i>Premiere Pro</span>
-            <span class="tech-chip"><i class="fas fa-paint-brush" style="color:#31a8ff;margin-right:5px"></i>Photoshop</span>
-            <span class="tech-chip"><i class="fas fa-vector-square" style="color:#ff9a00;margin-right:5px"></i>Illustrator</span>
-            <span class="tech-chip"><i class="fas fa-drafting-compass" style="color:#f24e1e;margin-right:5px"></i>Figma</span>
-            <span class="tech-chip"><i class="fas fa-file-excel" style="color:#217346;margin-right:5px"></i>MS. Office</span>
+          <div class="hero-pills">
+            <span class="hero-pill"><i class="fas fa-map-marker-alt"></i> Batam, Indonesia</span>
+            <span class="hero-pill"><i class="fas fa-phone"></i> +62 878 6381 3426</span>
+            <span class="hero-pill"><i class="fas fa-calendar-alt"></i> 04 Oktober 2007</span>
           </div>
         </div>
-      </section>
 
-      <!-- ══ PORTFOLIO ══ -->
-      <section class="section-block" id="section-portfolio" data-section="portfolio">
-        <div class="section-scroll-label">
-          <span class="section-scroll-num">05</span>
-          Portfolio
-        </div>
-        <div class="sec-head">
-          <div class="sec-head-icon"><i class="fas fa-briefcase"></i></div>
-          <div class="sec-head-text"><h2>PORTFOLIO PROYEK</h2><p>Karya dan proyek yang telah diselesaikan</p></div>
-          <span class="sec-badge badge-gold">6 Projects</span>
-        </div>
-        <div class="tbl-wrap">
-          <div class="tbl-label"><i class="fas fa-folder-open"></i> Daftar Proyek</div>
-          <table>
-            <thead><tr><th>#</th><th>Nama Proyek</th><th>Kategori</th><th>Teknologi</th><th>Tahun</th><th>Status</th><th></th></tr></thead>
-            <tbody>
-              <tr><td style="color:var(--text-dim);font-size:10px">01</td><td style="color:var(--text-white);font-weight:500">Project PKL</td><td><span class="pt-badge web"><i class="fas fa-globe"></i> Web</span></td><td><span class="code-chip">HTML</span><span class="code-chip">CSS</span><span class="code-chip">PHP</span></td><td style="color:var(--text-dim);font-size:11px">2024</td><td><span class="status-done">● Selesai</span></td><td><button class="view-btn"><i class="fas fa-eye" style="margin-right:5px"></i>Lihat</button></td></tr>
-              <tr><td style="color:var(--text-dim);font-size:10px">02</td><td style="color:var(--text-white);font-weight:500">Project Sekolah</td><td><span class="pt-badge web"><i class="fas fa-globe"></i> Web</span></td><td><span class="code-chip">HTML</span><span class="code-chip">CSS</span><span class="code-chip">JS</span></td><td style="color:var(--text-dim);font-size:11px">2024</td><td><span class="status-done">● Selesai</span></td><td><button class="view-btn"><i class="fas fa-eye" style="margin-right:5px"></i>Lihat</button></td></tr>
-              <tr><td style="color:var(--text-dim);font-size:10px">03</td><td style="color:var(--text-white);font-weight:500">Project Toko Tas</td><td><span class="pt-badge web"><i class="fas fa-globe"></i> Web</span></td><td><span class="code-chip">Laravel</span><span class="code-chip">MySQL</span></td><td style="color:var(--text-dim);font-size:11px">2024</td><td><span class="status-done">● Selesai</span></td><td><button class="view-btn"><i class="fas fa-eye" style="margin-right:5px"></i>Lihat</button></td></tr>
-              <tr><td style="color:var(--text-dim);font-size:10px">04</td><td style="color:var(--text-white);font-weight:500">Pengaduan Masyarakat</td><td><span class="pt-badge sys"><i class="fas fa-server"></i> Sistem</span></td><td><span class="code-chip">PHP</span><span class="code-chip">MySQL</span><span class="code-chip">Bootstrap</span></td><td style="color:var(--text-dim);font-size:11px">2024</td><td><span class="status-done">● Selesai</span></td><td><button class="view-btn"><i class="fas fa-eye" style="margin-right:5px"></i>Lihat</button></td></tr>
-              <tr><td style="color:var(--text-dim);font-size:10px">05</td><td style="color:var(--text-white);font-weight:500">Project Game</td><td><span class="pt-badge game"><i class="fas fa-gamepad"></i> Game</span></td><td><span class="code-chip">Unity</span><span class="code-chip">C#</span></td><td style="color:var(--text-dim);font-size:11px">2025</td><td><span class="status-done">● Selesai</span></td><td><button class="view-btn"><i class="fas fa-eye" style="margin-right:5px"></i>Lihat</button></td></tr>
-              <tr><td style="color:var(--text-dim);font-size:10px">06</td><td style="color:var(--text-white);font-weight:500">Project Hotel</td><td><span class="pt-badge web"><i class="fas fa-globe"></i> Web</span></td><td><span class="code-chip">Laravel</span><span class="code-chip">Tailwind</span></td><td style="color:var(--text-dim);font-size:11px">2025</td><td><span class="status-done">● Selesai</span></td><td><button class="view-btn"><i class="fas fa-eye" style="margin-right:5px"></i>Lihat</button></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- ══ KONTAK ══ -->
-      <section class="section-block" id="section-kontak" data-section="kontak">
-        <div class="section-scroll-label">
-          <span class="section-scroll-num">06</span>
-          Kontak
-        </div>
-        <div class="sec-head">
-          <div class="sec-head-icon"><i class="fas fa-envelope"></i></div>
-          <div class="sec-head-text"><h2>HUBUNGI SAYA</h2><p>Jangan ragu untuk menghubungi melalui platform berikut</p></div>
-          <span class="sec-badge badge-green">● Online</span>
-        </div>
-        <div class="tbl-wrap" style="margin-bottom:24px">
-          <div class="tbl-label"><i class="fas fa-satellite-dish"></i> Informasi Kontak</div>
-          <table>
-            <thead><tr><th>Channel</th><th></th><th>Alamat</th><th>Waktu Respons</th></tr></thead>
-            <tbody>
-              <tr><td class="td-key"><i class="fas fa-envelope" style="color:var(--amber);margin-right:8px"></i>Email</td><td class="td-sep">:</td><td>khair@email.com</td><td style="color:var(--green);font-size:10px">~1 hari</td></tr>
-              <tr><td class="td-key"><i class="fab fa-whatsapp" style="color:#25d366;margin-right:8px"></i>WhatsApp</td><td class="td-sep">:</td><td>+62 878 6381 3426</td><td style="color:var(--green);font-size:10px">~2 jam</td></tr>
-              <tr><td class="td-key"><i class="fab fa-instagram" style="color:#e1306c;margin-right:8px"></i>Instagram</td><td class="td-sep">:</td><td>@khair.arryynn</td><td style="color:var(--amber);font-size:10px">~1 hari</td></tr>
-              <tr><td class="td-key"><i class="fab fa-linkedin" style="color:#0077b5;margin-right:8px"></i>LinkedIn</td><td class="td-sep">:</td><td>m-khair-ar-rayyan-1b9251386</td><td style="color:var(--amber);font-size:10px">~1–2 hari</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="contact-layout">
-          <div class="tbl-wrap" style="margin-bottom:0">
-            <div class="tbl-label"><i class="fas fa-map-marked-alt"></i> Lokasi — UIB Batam</div>
-            <div style="padding:14px">
-              <div class="map-frame">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.05668747712!2d104.00085421475379!3d1.1195430991833824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d98be09646b351%3A0x36a826082690c786!2sBatam%20International%20University!5e0!3m2!1sen!2sid!4v1571133272968!5m2!1sen!2sid" frameborder="0" style="border:0" allowfullscreen loading="lazy"></iframe>
-              </div>
-              <div class="map-footer">
-                <span class="map-coords">1.1195° N, 104.0009° E</span>
-                <a href="https://maps.google.com/?q=Batam+International+University" target="_blank" class="view-btn" style="text-decoration:none;font-size:10px"><i class="fas fa-external-link-alt" style="margin-right:5px"></i>Buka Maps</a>
-              </div>
+        <!-- Right: Profile Photo -->
+        <div class="hero-photo-side">
+          <div class="photo-frame">
+            <!--
+              Ganti src di bawah ini dengan path foto asli kamu.
+              Contoh: src="foto-profil.jpg"
+            -->
+            <div class="photo-placeholder">
+              <div class="pp-icon"><i class="fas fa-user"></i></div>
+              <div class="pp-initials">MKA</div>
+              <div class="pp-hint">Foto Profil<br>M. Khair Arrayyan</div>
             </div>
           </div>
-          <div class="tbl-wrap" style="margin-bottom:0">
-            <div class="tbl-label"><i class="fas fa-paper-plane"></i> Kirim Pesan</div>
-            <div style="padding:16px">
-              <div class="field-wrap">
-                <label class="field-lbl"><span>—</span> Nama Lengkap</label>
-                <input class="field-inp" type="text" placeholder="Nama kamu...">
-              </div>
-              <div class="field-wrap">
-                <label class="field-lbl"><span>—</span> Alamat Email</label>
-                <input class="field-inp" type="email" placeholder="email@domain.com">
-              </div>
-              <div class="field-wrap">
-                <label class="field-lbl"><span>—</span> Pesan</label>
-                <textarea class="field-inp" placeholder="Tulis pesanmu di sini..."></textarea>
-              </div>
-              <button class="send-btn" id="sendBtn"><i class="fas fa-paper-plane" style="margin-right:8px"></i>Kirim Pesan</button>
+
+          <div class="photo-status">
+            <div class="ps-item"><i class="fas fa-circle" style="color:#22c55e;font-size:7px"></i> Status: Aktif · Online</div>
+            <div class="ps-item"><i class="fas fa-university"></i> UIB · Sistem Informasi</div>
+            <div class="ps-item"><i class="fas fa-layer-group"></i> Semester 2 · Angkatan 2025</div>
+          </div>
+        </div>
+
+      </div><!-- /hero-inner -->
+
+      <!-- Stat Cards -->
+      <div class="stat-grid">
+        <div class="stat-card"><span class="stat-num" data-count="6">0</span><span class="stat-label">Proyek Selesai</span></div>
+        <div class="stat-card"><span class="stat-num" data-count="11">0</span><span class="stat-label">Keahlian</span></div>
+        <div class="stat-card"><span class="stat-num" data-count="2">0</span><span class="stat-label">Semester Aktif</span></div>
+        <div class="stat-card"><span class="stat-num" data-count="1">0</span><span class="stat-label">Pengalaman Magang</span></div>
+      </div>
+
+    </section>
+
+    <!-- ── 2. BIODATA ── -->
+    <section class="section" id="biodata">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="fas fa-id-card"></i></div>
+        <div>
+          <span class="sec-title">DATA PRIBADI</span>
+          <span class="sec-sub">Informasi biodata lengkap M. Khair Arrayyan</span>
+        </div>
+        <span class="sec-badge badge-green"><i class="fas fa-check" style="margin-right:5px"></i>Terverifikasi</span>
+      </div>
+
+      <!-- Tabel Data Pribadi -->
+      <div class="tbl-wrap">
+        <div class="tbl-head"><i class="fas fa-user-circle"></i> Data Pribadi</div>
+        <table>
+          <thead><tr><th>Keterangan</th><th></th><th>Informasi</th></tr></thead>
+          <tbody>
+            <tr><td class="td-key">Nama Lengkap</td><td class="td-sep">:</td><td class="td-navy">M. Khair Arrayyan</td></tr>
+            <tr><td class="td-key">Tanggal Lahir</td><td class="td-sep">:</td><td>04 Oktober 2007</td></tr>
+            <tr><td class="td-key">Tempat Lahir</td><td class="td-sep">:</td><td>Batam, Kepulauan Riau</td></tr>
+            <tr><td class="td-key">Kewarganegaraan</td><td class="td-sep">:</td><td>Indonesia 🇮🇩</td></tr>
+            <tr><td class="td-key">Jenis Kelamin</td><td class="td-sep">:</td><td>Laki-laki</td></tr>
+            <tr><td class="td-key">Agama</td><td class="td-sep">:</td><td>Islam</td></tr>
+            <tr><td class="td-key">Bahasa</td><td class="td-sep">:</td><td><span class="pill pill-blue">Indonesia</span>&nbsp;<span class="pill pill-muted">Inggris</span></td></tr>
+            <tr><td class="td-key">Status</td><td class="td-sep">:</td><td><span class="pill pill-green">Aktif · Mahasiswa</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </section>
+
+    <!-- ── 3. PENDIDIKAN ── -->
+    <section class="section" id="pendidikan">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <span class="sec-title">LATAR BELAKANG PENDIDIKAN</span>
+          <span class="sec-sub">Riwayat pendidikan formal dan pengalaman kerja</span>
+        </div>
+        <span class="sec-badge badge-gold">5 Entries</span>
+      </div>
+
+      <div class="tbl-wrap">
+        <div class="tbl-head"><i class="fas fa-table"></i> Riwayat Pendidikan Formal</div>
+        <table>
+          <thead>
+            <tr><th>Periode</th><th>Jenjang</th><th>Institusi</th><th>Jurusan / Keterangan</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--blue);font-weight:600;font-size:11px;white-space:nowrap">2025 – kini</td>
+              <td><span class="pill pill-blue">S1</span></td>
+              <td style="font-weight:600;color:var(--text-heading)">Universitas Internasional Batam</td>
+              <td style="color:var(--text-muted);font-size:11px">Sistem Informasi</td>
+              <td><span class="pill pill-green">Aktif</span></td>
+            </tr>
+            <tr>
+              <td style="color:var(--blue);font-weight:600;font-size:11px;white-space:nowrap">2024 – 2025</td>
+              <td><span class="pill pill-gold">Magang</span></td>
+              <td style="font-weight:600;color:var(--text-heading)">PT PGN Solution Batam</td>
+              <td style="color:var(--text-muted);font-size:11px">Praktik Kerja Lapangan (PKL)</td>
+              <td><span class="pill pill-muted">Selesai</span></td>
+            </tr>
+            <tr>
+              <td style="color:var(--blue);font-weight:600;font-size:11px;white-space:nowrap">2022 – 2025</td>
+              <td><span class="pill pill-muted">SMK</span></td>
+              <td style="font-weight:600;color:var(--text-heading)">SMK Multistudi Highschool Batam</td>
+              <td style="color:var(--text-muted);font-size:11px">Rekayasa Perangkat Lunak (RPL)</td>
+              <td><span class="pill pill-muted">Lulus</span></td>
+            </tr>
+            <tr>
+              <td style="color:var(--blue);font-weight:600;font-size:11px;white-space:nowrap">2019 – 2022</td>
+              <td><span class="pill pill-muted">SMP</span></td>
+              <td style="font-weight:600;color:var(--text-heading)">SMPN 29 Batam</td>
+              <td style="color:var(--text-muted);font-size:11px">—</td>
+              <td><span class="pill pill-muted">Lulus</span></td>
+            </tr>
+            <tr>
+              <td style="color:var(--blue);font-weight:600;font-size:11px;white-space:nowrap">2013 – 2019</td>
+              <td><span class="pill pill-muted">SD</span></td>
+              <td style="font-weight:600;color:var(--text-heading)">SDN 001 Batu Ampar</td>
+              <td style="color:var(--text-muted);font-size:11px">—</td>
+              <td><span class="pill pill-muted">Lulus</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-head"><i class="fas fa-stream"></i> TIMELINE PERJALANAN</div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-period">2025 — Sekarang</div>
+          <div class="tl-level">Perguruan Tinggi</div>
+          <div class="tl-school">Universitas Internasional Batam</div>
+          <div class="tl-detail">S1 Sistem Informasi &nbsp;·&nbsp; Batam, Kepulauan Riau</div>
+          <span class="tl-badge" style="background:var(--green-soft);color:var(--green);border:1px solid rgba(22,163,74,.3)">● Aktif</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2024 — 2025</div>
+          <div class="tl-level">Magang / PKL</div>
+          <div class="tl-school">PT PGN Solution Batam</div>
+          <div class="tl-detail">Praktik Kerja Lapangan &nbsp;·&nbsp; Pengembangan Web</div>
+          <span class="tl-badge" style="background:var(--gold-soft);color:var(--gold-dark);border:1px solid var(--gold-border)">Selesai</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2022 — 2025</div>
+          <div class="tl-level">Sekolah Menengah Kejuruan</div>
+          <div class="tl-school">SMK Multistudi Highschool Batam</div>
+          <div class="tl-detail">Jurusan Rekayasa Perangkat Lunak (RPL)</div>
+          <span class="tl-badge" style="background:var(--surface-page);color:var(--text-muted);border:1px solid var(--border)">Lulus</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2019 — 2022</div>
+          <div class="tl-level">Sekolah Menengah Pertama</div>
+          <div class="tl-school">SMPN 29 Batam</div>
+          <div class="tl-detail">Batam, Kepulauan Riau</div>
+          <span class="tl-badge" style="background:var(--surface-page);color:var(--text-muted);border:1px solid var(--border)">Lulus</span>
+        </div>
+        <div class="tl-item" style="padding-bottom:0">
+          <div class="tl-period">2013 — 2019</div>
+          <div class="tl-level">Sekolah Dasar</div>
+          <div class="tl-school">SDN 001 Batu Ampar</div>
+          <div class="tl-detail">Batam, Kepulauan Riau</div>
+          <span class="tl-badge" style="background:var(--surface-page);color:var(--text-muted);border:1px solid var(--border)">Lulus</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── 4. KEAHLIAN ── -->
+    <section class="section" id="keahlian">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="fas fa-star"></i></div>
+        <div>
+          <span class="sec-title">KEAHLIAN &amp; TEKNOLOGI</span>
+          <span class="sec-sub">Tingkat kemahiran dan tech stack yang dikuasai</span>
+        </div>
+        <span class="sec-badge badge-blue">11 Skills</span>
+      </div>
+
+      <div class="tbl-wrap">
+        <div class="tbl-head"><i class="fas fa-chart-bar"></i> Tabel Tingkat Keahlian</div>
+        <table>
+          <thead>
+            <tr><th>#</th><th>Keahlian</th><th>Kategori</th><th>Kemahiran</th><th>Level</th><th style="text-align:right">%</th></tr>
+          </thead>
+          <tbody id="skillTbody">
+            <tr><td style="color:var(--text-muted);font-size:10px">01</td><td><i class="fab fa-html5"         style="color:#e34f26;margin-right:8px"></i>HTML / CSS</td>              <td><span class="pill pill-muted">Frontend</span></td> <td><div class="skill-track"><div class="skill-fill" data-width="78"></div></div></td><td><span class="pill pill-blue">Intermediate</span></td>    <td class="skill-pct">78%</td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">02</td><td><i class="fab fa-js-square"     style="color:#f0c000;margin-right:8px"></i>JavaScript</td>             <td><span class="pill pill-muted">Frontend</span></td> <td><div class="skill-track"><div class="skill-fill" data-width="60"></div></div></td><td><span class="pill pill-amber">Beginner+</span></td> <td class="skill-pct">60%</td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">03</td><td><i class="fab fa-php"           style="color:#8892bf;margin-right:8px"></i>PHP</td>                    <td><span class="pill pill-muted">Backend</span></td>  <td><div class="skill-track"><div class="skill-fill" data-width="70"></div></div></td><td><span class="pill pill-blue">Intermediate</span></td> <td class="skill-pct">70%</td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">04</td><td><i class="fab fa-python"        style="color:#306998;margin-right:8px"></i>Python</td>                 <td><span class="pill pill-muted">Backend</span></td>  <td><div class="skill-track"><div class="skill-fill" data-width="68"></div></div></td><td><span class="pill pill-amber">Beginner+</span></td>   <td class="skill-pct">68%</td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">05</td><td><i class="fas fa-database"      style="color:var(--blue);margin-right:8px"></i>Database / MySQL</td>   <td><span class="pill pill-muted">Database</span></td> <td><div class="skill-track"><div class="skill-fill" data-width="85"></div></div></td><td><span class="pill pill-green">Advanced</span></td> <td class="skill-pct">85%</td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">06</td><td><i class="fas fa-paint-brush"   style="color:#ff6b35;margin-right:8px"></i>Adobe Illustrator &amp; PS</td><td><span class="pill pill-muted">Design</span></td>  <td><div class="skill-track"><div class="skill-fill" data-width="70"></div></div></td><td><span class="pill pill-blue">Intermediate</span></td> <td class="skill-pct">70%</td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">07</td><td><i class="fas fa-film"          style="color:#a855f7;margin-right:8px"></i>Adobe Premiere Pro</td>     <td><span class="pill pill-muted">Video</span></td>    <td><div class="skill-track"><div class="skill-fill" data-width="60"></div></div></td><td><span class="pill pill-amber">Beginner+</span></td> <td class="skill-pct">60%</td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">08</td><td><i class="fas fa-pencil-ruler"  style="color:var(--green);margin-right:8px"></i>UI/UX Prototyping</td> <td><span class="pill pill-muted">Design</span></td>   <td><div class="skill-track"><div class="skill-fill" data-width="85"></div></div></td><td><span class="pill pill-green">Advanced</span></td> <td class="skill-pct">85%</td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">09</td><td><i class="fab fa-git-alt"       style="color:#f05032;margin-right:8px"></i>Git &amp; GitHub</td>        <td><span class="pill pill-muted">DevTools</span></td> <td><div class="skill-track"><div class="skill-fill" data-width="75"></div></div></td><td><span class="pill pill-blue">Intermediate</span></td> <td class="skill-pct">75%</td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">10</td><td><i class="fas fa-project-diagram" style="color:var(--gold-dark);margin-right:8px"></i>Flowchart / ERD / UML</td><td><span class="pill pill-muted">Analysis</span></td><td><div class="skill-track"><div class="skill-fill" data-width="78"></div></div></td><td><span class="pill pill-blue">Intermediate</span></td><td class="skill-pct">78%</td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">11</td><td><i class="fas fa-gamepad"       style="color:#a855f7;margin-right:8px"></i>Unity / Game Dev</td>       <td><span class="pill pill-muted">Game</span></td>     <td><div class="skill-track"><div class="skill-fill" data-width="40"></div></div></td><td><span class="pill pill-amber">Beginner</span></td>   <td class="skill-pct">40%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tbl-wrap">
+        <div class="tbl-head"><i class="fas fa-layer-group"></i> Tech Stack</div>
+        <div class="chip-grid">
+          <span class="tech-chip"><i class="fab fa-html5"          style="color:#e34f26;margin-right:5px"></i>HTML5</span>
+          <span class="tech-chip"><i class="fab fa-css3-alt"       style="color:#264de4;margin-right:5px"></i>CSS3</span>
+          <span class="tech-chip"><i class="fab fa-js"             style="color:#f0c000;margin-right:5px"></i>JavaScript</span>
+          <span class="tech-chip"><i class="fab fa-php"            style="color:#8892bf;margin-right:5px"></i>PHP</span>
+          <span class="tech-chip"><i class="fab fa-python"         style="color:#3776ab;margin-right:5px"></i>Python</span>
+          <span class="tech-chip"><i class="fas fa-database"       style="color:var(--blue);margin-right:5px"></i>MySQL</span>
+          <span class="tech-chip"><i class="fab fa-git-alt"        style="color:#f05032;margin-right:5px"></i>Git</span>
+          <span class="tech-chip"><i class="fab fa-github"         style="margin-right:5px"></i>GitHub</span>
+          <span class="tech-chip"><i class="fas fa-server"         style="color:#ff6900;margin-right:5px"></i>XAMPP</span>
+          <span class="tech-chip"><i class="fas fa-gamepad"        style="color:#a855f7;margin-right:5px"></i>Unity</span>
+          <span class="tech-chip"><i class="fas fa-film"           style="color:#a855f7;margin-right:5px"></i>Premiere Pro</span>
+          <span class="tech-chip"><i class="fas fa-paint-brush"    style="color:#31a8ff;margin-right:5px"></i>Photoshop</span>
+          <span class="tech-chip"><i class="fas fa-vector-square"  style="color:#ff9a00;margin-right:5px"></i>Illustrator</span>
+          <span class="tech-chip"><i class="fas fa-drafting-compass"style="color:#f24e1e;margin-right:5px"></i>Figma</span>
+          <span class="tech-chip"><i class="fas fa-file-excel"     style="color:#217346;margin-right:5px"></i>MS. Office</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── 5. PORTFOLIO ── -->
+    <section class="section" id="portfolio">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="fas fa-briefcase"></i></div>
+        <div>
+          <span class="sec-title">PORTFOLIO PROYEK</span>
+          <span class="sec-sub">Karya dan proyek yang telah dikerjakan</span>
+        </div>
+        <span class="sec-badge badge-gold">6 Projects</span>
+      </div>
+
+      <div class="tbl-wrap">
+        <div class="tbl-head"><i class="fas fa-folder-open"></i> Daftar Proyek</div>
+        <table>
+          <thead>
+            <tr><th>#</th><th>Nama Proyek</th><th>Kategori</th><th>Teknologi</th><th>Tahun</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr><td style="color:var(--text-muted);font-size:10px">01</td><td style="color:var(--text-heading);font-weight:600">Project PKL</td>             <td><span class="pt-badge web"><i class="fas fa-globe"></i> Web</span></td>     <td><span class="code-chip">HTML</span><span class="code-chip">CSS</span><span class="code-chip">PHP</span></td>              <td style="color:var(--text-muted);font-size:11px">2025</td><td><span class="status-done">● Selesai</span></td>  <td><button class="view-btn"><i class="fas fa-eye" style="margin-right:4px"></i>Lihat</button></td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">02</td><td style="color:var(--text-heading);font-weight:600">Project Sekolah</td>         <td><span class="pt-badge web"><i class="fas fa-globe"></i> Web</span></td>     <td><span class="code-chip">HTML</span><span class="code-chip">CSS</span><span class="code-chip">JS</span></td>               <td style="color:var(--text-muted);font-size:11px">2024</td><td><span class="status-done">● Selesai</span></td>  <td><button class="view-btn"><i class="fas fa-eye" style="margin-right:4px"></i>Lihat</button></td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">03</td><td style="color:var(--text-heading);font-weight:600">Project Toko Tas</td>        <td><span class="pt-badge web"><i class="fas fa-globe"></i> Web</span></td>     <td><span class="code-chip">Laravel</span><span class="code-chip">MySQL</span></td>                                             <td style="color:var(--text-muted);font-size:11px">2024</td><td><span class="status-done">● Selesai</span></td>  <td><button class="view-btn"><i class="fas fa-eye" style="margin-right:4px"></i>Lihat</button></td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">04</td><td style="color:var(--text-heading);font-weight:600">Pengaduan Masyarakat</td>   <td><span class="pt-badge sys"><i class="fas fa-server"></i> Sistem</span></td> <td><span class="code-chip">PHP</span><span class="code-chip">MySQL</span><span class="code-chip">Bootstrap</span></td>      <td style="color:var(--text-muted);font-size:11px">2024</td><td><span class="status-done">● Selesai</span></td>  <td><button class="view-btn"><i class="fas fa-eye" style="margin-right:4px"></i>Lihat</button></td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">05</td><td style="color:var(--text-heading);font-weight:600">Project Game</td>            <td><span class="pt-badge game"><i class="fas fa-gamepad"></i> Game</span></td> <td><span class="code-chip">Unity</span><span class="code-chip">C#</span></td>                                                  <td style="color:var(--text-muted);font-size:11px">2025</td><td><span class="status-done">● Selesai</span></td>  <td><button class="view-btn"><i class="fas fa-eye" style="margin-right:4px"></i>Lihat</button></td></tr>
+            <tr><td style="color:var(--text-muted);font-size:10px">06</td><td style="color:var(--text-heading);font-weight:600">Project Hotel</td>           <td><span class="pt-badge web"><i class="fas fa-globe"></i> Web</span></td>     <td><span class="code-chip">Laravel</span><span class="code-chip">Tailwind</span></td>                                         <td style="color:var(--text-muted);font-size:11px">2023</td><td><span class="status-done">● Selesai</span></td>  <td><button class="view-btn"><i class="fas fa-eye" style="margin-right:4px"></i>Lihat</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── 6. KONTAK ── -->
+    <section class="section" id="kontak">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="fas fa-envelope"></i></div>
+        <div>
+          <span class="sec-title">HUBUNGI SAYA</span>
+          <span class="sec-sub">silahkan menghubungi saya melalui platform berikut</span>
+        </div>
+        <span class="sec-badge badge-green">● Online</span>
+      </div>
+
+      <div class="tbl-wrap" style="margin-bottom:24px">
+        <div class="tbl-head"><i class="fas fa-satellite-dish"></i> Informasi Kontak Cepat</div>
+        <table>
+          <thead><tr><th>Channel</th><th></th><th>Alamat</th><th>Waktu Respons</th></tr></thead>
+          <tbody>
+            <tr><td class="td-key"><i class="fas fa-envelope"  style="color:var(--amber);margin-right:8px"></i>Email</td>     <td class="td-sep">:</td><td>khairarrayyan@gmail.com</td>          <td style="color:var(--green);font-size:11px;font-weight:500">~1 hari</td></tr>
+            <tr><td class="td-key"><i class="fab fa-whatsapp" style="color:#25d366;margin-right:8px"></i>WhatsApp</td>        <td class="td-sep">:</td><td>+62 878 6381 3426</td>                 <td style="color:var(--green);font-size:11px;font-weight:500">~2 jam</td></tr>
+            <tr><td class="td-key"><i class="fab fa-instagram" style="color:#e1306c;margin-right:8px"></i>Instagram</td>     <td class="td-sep">:</td><td>@khair.arryynn</td>                    <td style="color:var(--green);font-size:11px;font-weight:500">~1 jam</td></tr>
+            <tr><td class="td-key"><i class="fab fa-github"  style="color:#374151;margin-right:8px"></i>github</td>      <td class="td-sep">:</td><td>KhairArrayyannmhs01</td>      <td style="color:var(--amber);font-size:11px;font-weight:500">~1-2 hari</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="contact-grid">
+        <div class="ccard">
+          <div class="ccard-head"><i class="fas fa-map-marked-alt"></i> Lokasi — UIB Batam</div>
+          <div class="ccard-body">
+            <div class="map-wrap">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.05668747712!2d104.00085421475379!3d1.1195430991833824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d98be09646b351%3A0x36a826082690c786!2sBatam%20International%20University!5e0!3m2!1sen!2sid!4v1571133272968!5m2!1sen!2sid" frameborder="0" style="border:0" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="map-footer">
+              <span>1.1195° N, 104.0009° E</span>
+              <a href="https://maps.google.com/?q=Batam+International+University" target="_blank" class="view-btn" style="text-decoration:none;font-size:10px"><i class="fas fa-external-link-alt" style="margin-right:4px"></i>Buka Maps</a>
             </div>
           </div>
         </div>
-      </section>
 
-    </div>
-  </div>
+        <div class="ccard">
+          <div class="ccard-head"><i class="fas fa-paper-plane"></i> Kirim Pesan</div>
+          <div class="ccard-body">
+            <div class="field-wrap">
+              <label class="field-lbl">Nama Lengkap</label>
+              <input class="field-inp" type="text" placeholder="Nama kamu...">
+            </div>
+            <div class="field-wrap">
+              <label class="field-lbl">Alamat Email</label>
+              <input class="field-inp" type="email" placeholder="email@domain.com">
+            </div>
+            <div class="field-wrap">
+              <label class="field-lbl">Pesan</label>
+              <textarea class="field-inp" placeholder="Tulis pesanmu di sini..."></textarea>
+            </div>
+            <button class="send-btn" id="sendBtn">
+              <i class="fas fa-paper-plane" style="margin-right:8px"></i>Kirim Pesan
+            </button>
+          </div>
+        </div>
+      </div>
 
-  <!-- ══ RIGHT SIDEBAR ══ -->
+    </section>
+
+  </main><!-- /main-content -->
+
+  <!-- ════════════ RIGHT SIDEBAR ════════════ -->
   <aside class="sidebar-right">
+
     <div class="rw">
       <div class="rw-head"><i class="fas fa-clock"></i> Waktu Sekarang</div>
       <div class="rw-body">
-        <div class="clock-main" id="clock">00:00:00</div>
-        <div class="clock-sub" id="clockDate">—</div>
+        <div class="clock-num"  id="clock">00:00:00</div>
+        <div class="clock-txt"  id="clockDate">—</div>
       </div>
     </div>
+
     <div class="rw">
       <div class="rw-head"><i class="fas fa-chart-pie"></i> Ringkasan</div>
       <div class="rw-body">
-        <div class="rw-stat"><span class="rw-stat-label">Proyek</span><span class="rw-stat-val">6</span></div>
-        <div class="rw-stat"><span class="rw-stat-label">Keahlian</span><span class="rw-stat-val">11</span></div>
-        <div class="rw-stat"><span class="rw-stat-label">Semester</span><span class="rw-stat-val">2</span></div>
-        <div class="rw-stat"><span class="rw-stat-label">Magang</span><span class="rw-stat-val">1 PKL</span></div>
-        <div class="rw-stat"><span class="rw-stat-label">Status</span><span class="rw-stat-val" style="color:var(--green)">Aktif</span></div>
+        <div class="rw-stat"><span class="rw-stat-label">Keahlian</span> <span class="rw-stat-val">11</span></div>
+        <div class="rw-stat"><span class="rw-stat-label">Proyek</span>   <span class="rw-stat-val">6</span></div>
+        <div class="rw-stat"><span class="rw-stat-label">Semester</span> <span class="rw-stat-val">2</span></div>
+        <div class="rw-stat"><span class="rw-stat-label">Status</span>   <span class="rw-stat-val" style="color:var(--green)">Aktif</span></div>
       </div>
     </div>
+
     <div class="rw">
       <div class="rw-head"><i class="fas fa-star"></i> Top Keahlian</div>
       <div class="rw-body">
-        <div class="rw-skill"><div class="rw-skill-head"><span>HTML / CSS</span><span class="rw-skill-pct">85%</span></div><div class="rw-skill-track"><div class="rw-skill-fill" data-w="85"></div></div></div>
-        <div class="rw-skill"><div class="rw-skill-head"><span>JavaScript</span><span class="rw-skill-pct">70%</span></div><div class="rw-skill-track"><div class="rw-skill-fill" data-w="70"></div></div></div>
-        <div class="rw-skill"><div class="rw-skill-head"><span>PHP</span><span class="rw-skill-pct">68%</span></div><div class="rw-skill-track"><div class="rw-skill-fill" data-w="68"></div></div></div>
-        <div class="rw-skill"><div class="rw-skill-head"><span>MySQL</span><span class="rw-skill-pct">72%</span></div><div class="rw-skill-track"><div class="rw-skill-fill" data-w="72"></div></div></div>
+        <div class="rw-skill"><div class="rw-skill-head"><span>UI/UX Prototyping  </span><span class="rw-skill-pct">85%</span></div><div class="rw-skill-track"><div class="rw-skill-fill" data-w="85"></div></div></div>
+        <div class="rw-skill"><div class="rw-skill-head"><span>Database / MySQL</span><span class="rw-skill-pct">85%</span></div><div class="rw-skill-track"><div class="rw-skill-fill" data-w="85"></div></div></div>
+        <div class="rw-skill"><div class="rw-skill-head"><span>HTML / CSS</span><span class="rw-skill-pct">78%</span></div><div class="rw-skill-track"><div class="rw-skill-fill" data-w="78"></div></div></div>
+        <div class="rw-skill"><div class="rw-skill-head"><span>Flowchart / ERD / UML</span><span class="rw-skill-pct">78%</span></div><div class="rw-skill-track"><div class="rw-skill-fill" data-w="78"></div></div></div>
         <div class="rw-skill"><div class="rw-skill-head"><span>Adobe Suite</span><span class="rw-skill-pct">75%</span></div><div class="rw-skill-track"><div class="rw-skill-fill" data-w="75"></div></div></div>
       </div>
     </div>
+
     <div class="rw">
       <div class="rw-head"><i class="fas fa-quote-left"></i> Quote</div>
       <div class="rw-body">
@@ -977,131 +1929,137 @@
         <p class="rw-quote-attr">— Linus Torvalds</p>
       </div>
     </div>
+
     <div class="rw">
       <div class="rw-head"><i class="fas fa-link"></i> Tautan Cepat</div>
       <div class="rw-body" style="padding:10px 14px">
-        <a class="rw-link" href="https://github.com/KhairArrayyannmhs01" target="_blank"><i class="fab fa-github"></i> GitHub Profile</a>
+        <a class="rw-link" href="https://github.com/KhairArrayyannmhs01"                   target="_blank"><i class="fab fa-github"></i> GitHub Profile</a>
         <a class="rw-link" href="https://www.linkedin.com/in/m-khair-ar-rayyan-1b9251386/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a class="rw-link" href="https://www.instagram.com/khair.arryynn/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-        <a class="rw-link" href="https://www.uib.ac.id" target="_blank"><i class="fas fa-university"></i> UIB Website</a>
+        <a class="rw-link" href="https://www.instagram.com/khair.arryynn/"                 target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a class="rw-link" href="https://www.uib.ac.id"                                    target="_blank"><i class="fas fa-university"></i> UIB Website</a>
       </div>
     </div>
+
   </aside>
 
-</div>
+</div><!-- /layout -->
 
+<!-- ════════════ JAVASCRIPT ════════════ -->
 <script>
-// ═══ CLOCK ═══
-function updateClock(){
-  const now=new Date(),pad=n=>String(n).padStart(2,'0');
-  document.getElementById('clock').textContent=`${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-  const days=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],months=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-  document.getElementById('clockDate').textContent=`${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
-}
-setInterval(updateClock,1000);updateClock();
-
-// ═══ SCROLL NAVIGATION ═══
-const sections = document.querySelectorAll('.section-block[data-section]');
-const sbNavItems = document.querySelectorAll('.sb-nav-item');
-
-// Scroll to section when nav item clicked
-sbNavItems.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = btn.dataset.target;
-    scrollToSection(target);
-    document.getElementById('sidebarLeft').classList.remove('open');
-  });
-});
-
-function scrollToSection(target) {
-  const el = document.getElementById('section-' + target);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+/* ── Clock ── */
+(function ticker(){
+  const pad = n => String(n).padStart(2,'0');
+  const DAYS   = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+  const MONTHS = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'];
+  function tick(){
+    const d = new Date();
+    document.getElementById('clock').textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    document.getElementById('clockDate').textContent = `${DAYS[d.getDay()]}, ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
   }
-}
+  tick();
+  setInterval(tick, 1000);
+})();
 
-// Update active nav item on scroll using IntersectionObserver
-const observerOptions = {
-  root: null,
-  rootMargin: '-30% 0px -60% 0px',
-  threshold: 0
-};
-
-let currentActive = 'beranda';
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const sectionId = entry.target.dataset.section;
-      setActiveNav(sectionId);
-      // Animate skill bars when keahlian section is visible
-      if (sectionId === 'keahlian') animateSkillBars();
-    }
+/* ── Counter animation ── */
+setTimeout(function(){
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target = parseInt(el.dataset.count), count = 0;
+    var t = setInterval(function(){
+      count = Math.min(count + Math.ceil(target/20), target);
+      el.textContent = count;
+      if(count >= target) clearInterval(t);
+    }, 60);
   });
-}, observerOptions);
+}, 400);
 
-sections.forEach(section => observer.observe(section));
-
-function setActiveNav(target) {
-  if (target === currentActive) return;
-  currentActive = target;
-  sbNavItems.forEach(b => {
-    b.classList.toggle('active', b.dataset.target === target);
-  });
-}
-
-// ═══ SKILL BARS ═══
-let skillsAnimated = false;
-function animateSkillBars() {
-  if (skillsAnimated) return;
-  skillsAnimated = true;
-  document.querySelectorAll('.skill-bar-fill').forEach(el => {
-    el.style.width = el.dataset.width + '%';
-  });
-}
-
-// Right sidebar skill bars
-setTimeout(() => {
-  document.querySelectorAll('.rw-skill-fill').forEach(el => {
+/* ── Sidebar mini skill bars (on load) ── */
+setTimeout(function(){
+  document.querySelectorAll('.rw-skill-fill').forEach(function(el){
     el.style.width = el.dataset.w + '%';
   });
-}, 600);
+}, 700);
 
-// ═══ COUNTERS ═══
-function animateCounters() {
-  document.querySelectorAll('[data-count]').forEach(el => {
-    const target = parseInt(el.dataset.count); let count = 0;
-    const step = Math.ceil(target / 25);
-    const timer = setInterval(() => {
-      count = Math.min(count + step, target);
-      el.textContent = count;
-      if (count >= target) clearInterval(timer);
-    }, 50);
-  });
+/* ── Scroll-spy ── */
+var sections    = Array.from(document.querySelectorAll('.section[id]'));
+var sbLinks     = Array.from(document.querySelectorAll('.sb-link[data-section]'));
+var skillsDone  = false;
+
+function onScroll(){
+  var y = window.scrollY + window.innerHeight * 0.38;
+
+  /* active link */
+  var active = sections[0].id;
+  sections.forEach(function(sec){ if(sec.offsetTop <= y) active = sec.id; });
+  sbLinks.forEach(function(a){ a.classList.toggle('active', a.dataset.section === active); });
+
+  /* skill bars trigger */
+  if(!skillsDone){
+    var ks = document.getElementById('keahlian');
+    if(ks && window.scrollY + window.innerHeight > ks.offsetTop + 80){
+      skillsDone = true;
+      document.querySelectorAll('.skill-fill').forEach(function(el){
+        el.style.width = el.dataset.width + '%';
+      });
+    }
+  }
+
+  /* scroll-top button */
+  document.getElementById('scrollTopBtn').classList.toggle('show', window.scrollY > 280);
 }
-setTimeout(animateCounters, 300);
 
-// ═══ SCROLL TOP BUTTON ═══
-const scrollBtn = document.getElementById('scrollTopBtn');
-window.addEventListener('scroll', () => scrollBtn.classList.toggle('show', window.scrollY > 200));
-scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
-// ═══ MOBILE MENU ═══
-document.getElementById('mobMenu').addEventListener('click', () => {
-  document.getElementById('sidebarLeft').classList.toggle('open');
+/* ── Smooth scroll on sidebar click ── */
+sbLinks.forEach(function(a){
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    var target = document.getElementById(a.dataset.section);
+    if(target) target.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('sidebarLeft').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+  });
 });
 
-// ═══ SEND BUTTON ═══
-document.getElementById('sendBtn').addEventListener('click', function() {
-  this.innerHTML = '<i class="fas fa-check" style="margin-right:8px"></i>Pesan Terkirim!';
-  this.style.background = 'var(--green-pale)';
-  this.style.borderColor = 'rgba(76,175,138,0.4)';
-  this.style.color = 'var(--green)';
-  setTimeout(() => {
-    this.innerHTML = '<i class="fas fa-paper-plane" style="margin-right:8px"></i>Kirim Pesan';
-    this.style.background = '';
-    this.style.borderColor = '';
-    this.style.color = '';
+/* ── Hero button smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  if(a.classList.contains('sb-link')) return; /* already handled */
+  a.addEventListener('click', function(e){
+    var id = a.getAttribute('href').slice(1);
+    var target = document.getElementById(id);
+    if(target){ e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+/* ── Scroll to top ── */
+document.getElementById('scrollTopBtn').addEventListener('click', function(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ── Mobile sidebar ── */
+var sidebar = document.getElementById('sidebarLeft');
+var overlay = document.getElementById('overlay');
+document.getElementById('mobBtn').addEventListener('click', function(){
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('show');
+});
+overlay.addEventListener('click', function(){
+  sidebar.classList.remove('open');
+  overlay.classList.remove('show');
+});
+
+/* ── Send button ── */
+document.getElementById('sendBtn').addEventListener('click', function(){
+  var btn = this;
+  btn.innerHTML = '<i class="fas fa-check" style="margin-right:8px"></i>Pesan Berhasil Terkirim!';
+  btn.style.background = '#16a34a';
+  btn.style.borderColor = '#16a34a';
+  btn.disabled = true;
+  setTimeout(function(){
+    btn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right:8px"></i>Kirim Pesan';
+    btn.style.background = '';
+    btn.style.borderColor = '';
+    btn.disabled = false;
   }, 3000);
 });
 </script>
