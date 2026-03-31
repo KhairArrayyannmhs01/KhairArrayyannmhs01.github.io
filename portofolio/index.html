@@ -1418,6 +1418,80 @@
     box-shadow: var(--shadow-blue);
   }
 
+  /* ═══════════════════════════════════════════════
+     PDF VIEWER — Wireframe Section
+  ═══════════════════════════════════════════════ */
+  .pdf-viewer-container {
+    background: var(--surface-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin: 24px 0;
+    position: relative;
+    height: 70vh;
+    max-height: 800px;
+  }
+
+  .pdf-viewer-container iframe,
+  .pdf-viewer-container embed {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .pdf-toolbar {
+    background: var(--navy-mid);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .pdf-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .pdf-download {
+    padding: 12px 28px;
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-border);
+    color: var(--gold-dark);
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.22s;
+    letter-spacing: 0.4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .pdf-download:hover {
+    background: var(--gold);
+    color: #ffffff;
+    box-shadow: var(--shadow-gold);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .pdf-viewer-container { height: 60vh; }
+    .pdf-actions { flex-direction: column; align-items: center; }
+  }
+
   .scroll-top.show { opacity: 1; pointer-events: all; }
   .scroll-top:hover { background: var(--blue-hover); transform: translateY(-2px); }
 
@@ -1530,6 +1604,7 @@
         <li><a class="sb-link"        href="#pendidikan"data-section="pendidikan"><span class="sb-link-icon"><i class="fas fa-graduation-cap"></i></span>Pendidikan<span class="sb-link-num">03</span></a></li>
         <li><a class="sb-link"        href="#keahlian"  data-section="keahlian"  ><span class="sb-link-icon"><i class="fas fa-star"></i></span>Keahlian<span class="sb-link-num">04</span></a></li>
         <li><a class="sb-link"        href="#portfolio" data-section="portfolio" ><span class="sb-link-icon"><i class="fas fa-briefcase"></i></span>Portfolio<span class="sb-link-num">05</span></a></li>
+        <li><a class="sb-link"        href="#wireframe" data-section="wireframe" ><span class="sb-link-icon"><i class="fas fa-pencil-alt"></i></span>Wireframe<span class="sb-link-num">07</span></a></li>
         <li><a class="sb-link"        href="#kontak"    data-section="kontak"    ><span class="sb-link-icon"><i class="fas fa-envelope"></i></span>Kontak<span class="sb-link-num">06</span></a></li>
       </ul>
     </nav>
@@ -1826,7 +1901,289 @@
       </div>
     </section>
 
-    <!-- ── 6. KONTAK ── -->
+    <!-- ── 6. WIREFRAME ── -->
+    <section class="section" id="wireframe" style="background:var(--surface-page)">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:rgba(201,168,76,0.10);border-color:rgba(201,168,76,0.28);color:var(--gold-dark)">
+          <i class="fas fa-file-pdf"></i>
+        </div>
+        <div>
+          <span class="sec-title">WIREFRAME DESAIN</span>
+          <span class="sec-sub">Dokumen wireframe — M. Khair Arrayyan (2531190)</span>
+        </div>
+        <span class="sec-badge badge-gold"><i class="fas fa-file-pdf" style="margin-right:5px"></i>PDF</span>
+      </div>
+ 
+      <!-- Info bar -->
+      <div style="
+        background:var(--surface-white);
+        border:1px solid var(--border);
+        border-left:3px solid var(--blue);
+        border-radius:var(--radius-sm);
+        padding:14px 20px;
+        display:flex;
+        align-items:center;
+        gap:14px;
+        margin-bottom:22px;
+        box-shadow:var(--shadow-xs);
+        flex-wrap:wrap;
+      ">
+        <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:220px">
+          <div style="
+            width:40px;height:40px;border-radius:var(--radius-sm);
+            background:var(--blue-soft);border:1px solid var(--blue-border);
+            display:flex;align-items:center;justify-content:center;
+            color:var(--blue);font-size:18px;flex-shrink:0
+          "><i class="fas fa-file-pdf"></i></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--text-heading)">Wireframing M.Khair Arrayyan_2531190</div>
+            <div style="font-size:10px;color:var(--text-muted);margin-top:2px">
+              <span style="margin-right:14px"><i class="fas fa-folder" style="color:var(--gold-dark);margin-right:4px"></i>assets/Wireframing M.Khair Arrayyan_2531190</span>
+              <span><i class="fas fa-user" style="color:var(--blue);margin-right:4px"></i>M. Khair Arrayyan · NIM 2531190</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap">
+          <a href="assets/Wireframing M.Khair Arrayyan_2531190.pdf"
+             target="_blank"
+             style="
+               display:inline-flex;align-items:center;gap:6px;
+               padding:8px 16px;
+               background:var(--blue);border:1px solid var(--blue);
+               color:#fff;border-radius:var(--radius-sm);
+               font-size:11px;font-weight:600;letter-spacing:0.3px;
+               transition:all 0.22s;text-decoration:none;cursor:pointer;
+             "
+             onmouseover="this.style.background='var(--blue-hover)';this.style.boxShadow='var(--shadow-blue)'"
+             onmouseout="this.style.background='var(--blue)';this.style.boxShadow=''"
+          ><i class="fas fa-external-link-alt"></i> Buka di Tab Baru</a>
+ 
+          <a href="assets/Wireframing M.Khair Arrayyan_2531190.pdf"
+             download
+             style="
+               display:inline-flex;align-items:center;gap:6px;
+               padding:8px 16px;
+               background:var(--gold-soft);border:1px solid var(--gold-border);
+               color:var(--gold-dark);border-radius:var(--radius-sm);
+               font-size:11px;font-weight:600;letter-spacing:0.3px;
+               transition:all 0.22s;text-decoration:none;cursor:pointer;
+             "
+             onmouseover="this.style.background='var(--gold-muted)';this.style.boxShadow='var(--shadow-gold)'"
+             onmouseout="this.style.background='var(--gold-soft)';this.style.boxShadow=''"
+          ><i class="fas fa-download"></i> Unduh PDF</a>
+        </div>
+      </div>
+ 
+      <!-- PDF Viewer embed -->
+      <div style="
+        background:var(--surface-white);
+        border:1px solid var(--border);
+        border-radius:var(--radius-md);
+        overflow:hidden;
+        box-shadow:var(--shadow-md);
+        margin-bottom:22px;
+      ">
+        <!-- Viewer toolbar -->
+        <div style="
+          background:var(--navy-mid);
+          padding:11px 18px;
+          display:flex;align-items:center;gap:10px;
+        ">
+          <i class="fas fa-file-pdf" style="color:var(--gold);font-size:14px"></i>
+          <span style="font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:500">PDF Viewer</span>
+          <span style="
+            margin-left:auto;font-size:9px;color:rgba(255,255,255,0.35);
+            font-weight:300;letter-spacing:1px;
+          ">Wireframing M.Khair Arrayyan_2531190.pdf</span>
+ 
+          <!-- Viewer control buttons -->
+          <a href="assets/Wireframing M.Khair Arrayyan_2531190.pdf" target="_blank"
+             style="
+               display:inline-flex;align-items:center;gap:5px;
+               padding:5px 12px;font-size:10px;font-weight:500;
+               background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.4);
+               color:#93b4fd;border-radius:var(--radius-xs);
+               text-decoration:none;transition:all 0.2s;
+             "
+             onmouseover="this.style.background='rgba(37,99,235,0.35)'"
+             onmouseout="this.style.background='rgba(37,99,235,0.2)'"
+          ><i class="fas fa-expand"></i> Fullscreen</a>
+        </div>
+ 
+        <!-- iframe PDF embed -->
+        <div style="position:relative;width:100%;height:680px;background:var(--surface-page)">
+          <iframe
+            id="pdfViewer"
+            src="assets/Wireframing M.Khair Arrayyan_2531190.pdf"
+            style="width:100%;height:100%;border:none;display:block"
+            title="Wireframe M. Khair Arrayyan"
+          ></iframe>
+ 
+          <!-- Fallback overlay (shown if PDF fails to load) -->
+          <div id="pdfFallback" style="
+            display:none;
+            position:absolute;inset:0;
+            background:var(--surface-page);
+            flex-direction:column;align-items:center;justify-content:center;
+            gap:16px;padding:40px;text-align:center;
+          ">
+            <div style="
+              width:70px;height:70px;border-radius:var(--radius-md);
+              background:var(--blue-soft);border:1px solid var(--blue-border);
+              display:flex;align-items:center;justify-content:center;
+              font-size:28px;color:var(--blue);
+            "><i class="fas fa-file-pdf"></i></div>
+            <div>
+              <div style="font-size:15px;font-weight:600;color:var(--text-heading);margin-bottom:6px">
+                PDF tidak dapat ditampilkan langsung
+              </div>
+              <div style="font-size:12px;color:var(--text-muted);max-width:380px;line-height:1.6">
+                Browser kamu memblokir tampilan PDF inline. Klik tombol di bawah untuk membuka atau mengunduh file wireframe.
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+              <a href="assets/Wireframing M.Khair Arrayyan_2531190.pdf" target="_blank"
+                 style="
+                   display:inline-flex;align-items:center;gap:7px;
+                   padding:10px 22px;background:var(--blue);border:1px solid var(--blue);
+                   color:#fff;border-radius:var(--radius-sm);font-size:12px;font-weight:600;
+                   text-decoration:none;transition:background 0.2s;
+                 "
+                 onmouseover="this.style.background='var(--blue-hover)'"
+                 onmouseout="this.style.background='var(--blue)'"
+              ><i class="fas fa-external-link-alt"></i> Buka di Tab Baru</a>
+              <a href="assets/Wireframing M.Khair Arrayyan_2531190.pdf" download
+                 style="
+                   display:inline-flex;align-items:center;gap:7px;
+                   padding:10px 22px;background:var(--gold-soft);border:1px solid var(--gold-border);
+                   color:var(--gold-dark);border-radius:var(--radius-sm);font-size:12px;font-weight:600;
+                   text-decoration:none;
+                 "
+              ><i class="fas fa-download"></i> Unduh PDF</a>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Document info cards -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:22px">
+ 
+        <div style="
+          background:var(--surface-white);border:1px solid var(--border);
+          border-radius:var(--radius-md);padding:16px;
+          display:flex;align-items:center;gap:12px;
+          box-shadow:var(--shadow-xs);transition:all 0.22s;
+        "
+          onmouseover="this.style.borderColor='var(--border-active)';this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.borderColor='var(--border)';this.style.transform=''"
+        >
+          <div style="
+            width:36px;height:36px;border-radius:var(--radius-sm);
+            background:var(--blue-soft);border:1px solid var(--blue-border);
+            display:flex;align-items:center;justify-content:center;
+            color:var(--blue);font-size:15px;flex-shrink:0
+          "><i class="fas fa-user-graduate"></i></div>
+          <div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Nama Mahasiswa</div>
+            <div style="font-size:12px;color:var(--text-heading);font-weight:600">M. Khair Arrayyan</div>
+          </div>
+        </div>
+ 
+        <div style="
+          background:var(--surface-white);border:1px solid var(--border);
+          border-radius:var(--radius-md);padding:16px;
+          display:flex;align-items:center;gap:12px;
+          box-shadow:var(--shadow-xs);transition:all 0.22s;
+        "
+          onmouseover="this.style.borderColor='var(--border-active)';this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.borderColor='var(--border)';this.style.transform=''"
+        >
+          <div style="
+            width:36px;height:36px;border-radius:var(--radius-sm);
+            background:var(--gold-soft);border:1px solid var(--gold-border);
+            display:flex;align-items:center;justify-content:center;
+            color:var(--gold-dark);font-size:15px;flex-shrink:0
+          "><i class="fas fa-id-badge"></i></div>
+          <div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">NIM</div>
+            <div style="font-size:12px;color:var(--text-heading);font-weight:600">2531190</div>
+          </div>
+        </div>
+ 
+        <div style="
+          background:var(--surface-white);border:1px solid var(--border);
+          border-radius:var(--radius-md);padding:16px;
+          display:flex;align-items:center;gap:12px;
+          box-shadow:var(--shadow-xs);transition:all 0.22s;
+        "
+          onmouseover="this.style.borderColor='var(--border-active)';this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.borderColor='var(--border)';this.style.transform=''"
+        >
+          <div style="
+            width:36px;height:36px;border-radius:var(--radius-sm);
+            background:var(--green-soft);border:1px solid rgba(22,163,74,0.25);
+            display:flex;align-items:center;justify-content:center;
+            color:var(--green);font-size:15px;flex-shrink:0
+          "><i class="fas fa-university"></i></div>
+          <div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Program Studi</div>
+            <div style="font-size:12px;color:var(--text-heading);font-weight:600">Teknik Informatika</div>
+          </div>
+        </div>
+ 
+        <div style="
+          background:var(--surface-white);border:1px solid var(--border);
+          border-radius:var(--radius-md);padding:16px;
+          display:flex;align-items:center;gap:12px;
+          box-shadow:var(--shadow-xs);transition:all 0.22s;
+        "
+          onmouseover="this.style.borderColor='var(--border-active)';this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.borderColor='var(--border)';this.style.transform=''"
+        >
+          <div style="
+            width:36px;height:36px;border-radius:var(--radius-sm);
+            background:var(--blue-soft);border:1px solid var(--blue-border);
+            display:flex;align-items:center;justify-content:center;
+            color:var(--blue);font-size:15px;flex-shrink:0
+          "><i class="fas fa-folder-open"></i></div>
+          <div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Folder Dokumen</div>
+            <div style="font-size:11px;color:var(--text-body);font-weight:400;word-break:break-all">assets/Wireframing&hellip;</div>
+          </div>
+        </div>
+ 
+      </div>
+ 
+      <!-- Catatan penggunaan -->
+      <div style="
+        background:var(--surface-white);
+        border:1px solid var(--border);
+        border-radius:var(--radius-md);
+        padding:18px 22px;
+        box-shadow:var(--shadow-xs);
+      ">
+        <div style="font-size:9px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;font-weight:500;margin-bottom:12px;display:flex;align-items:center;gap:7px">
+          <i class="fas fa-info-circle" style="color:var(--blue)"></i> Petunjuk Akses
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px">
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:10px;background:var(--surface-page);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <div style="width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">1</div>
+            <div style="font-size:11px;color:var(--text-body);line-height:1.6">Dokumen PDF dapat langsung dilihat pada viewer di atas bila browser mendukung.</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:10px;background:var(--surface-page);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <div style="width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">2</div>
+            <div style="font-size:11px;color:var(--text-body);line-height:1.6">Klik <strong style="color:var(--blue)">Buka di Tab Baru</strong> untuk tampilan penuh atau menggunakan fitur navigasi PDF browser.</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:10px;background:var(--surface-page);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <div style="width:26px;height:26px;border-radius:50%;background:var(--gold-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">3</div>
+            <div style="font-size:11px;color:var(--text-body);line-height:1.6">Gunakan tombol <strong style="color:var(--gold-dark)">Unduh PDF</strong> untuk menyimpan dokumen ke perangkat kamu.</div>
+          </div>
+        </div>
+      </div>
+ 
+    </section>
+
+    <!-- ── 7. KONTAK ── -->
     <section class="section" id="kontak">
       <div class="sec-head">
         <div class="sec-icon"><i class="fas fa-envelope"></i></div>
@@ -2062,6 +2419,44 @@ document.getElementById('sendBtn').addEventListener('click', function(){
     btn.disabled = false;
   }, 3000);
 });
+
+/* ── PDF viewer fallback ── */
+(function(){
+  var iframe = document.getElementById('pdfViewer');
+  var fallback = document.getElementById('pdfFallback');
+  if(!iframe || !fallback) return;
+ 
+  /* Show fallback if iframe fails to load */
+  iframe.addEventListener('error', function(){
+    iframe.style.display = 'none';
+    fallback.style.display = 'flex';
+  });
+ 
+  /* iOS / some mobile browsers can't embed PDFs inline */
+  var ua = navigator.userAgent.toLowerCase();
+  var isIOS = /iphone|ipad|ipod/.test(ua);
+  var isMobileFirefox = /firefox/.test(ua) && /mobile/.test(ua);
+ 
+  if(isIOS || isMobileFirefox){
+    iframe.style.display = 'none';
+    fallback.style.display = 'flex';
+  }
+ 
+  /* Timeout fallback: if iframe is blank after 6s, show fallback */
+  var timer = setTimeout(function(){
+    try {
+      var doc = iframe.contentDocument || iframe.contentWindow.document;
+      if(!doc || doc.body.innerHTML.trim() === ''){
+        iframe.style.display = 'none';
+        fallback.style.display = 'flex';
+      }
+    } catch(e) {
+      /* cross-origin: assume it loaded OK */
+    }
+  }, 6000);
+ 
+  iframe.addEventListener('load', function(){ clearTimeout(timer); });
+})();
 </script>
 </body>
 </html>
